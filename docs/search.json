@@ -14,6 +14,13 @@
     "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
   },
   {
+    "objectID": "posts/Alexus second Post /index.html",
+    "href": "posts/Alexus second Post /index.html",
+    "title": "Second Blog Post",
+    "section": "",
+    "text": "Tips for making a new post\n\nCopy the folder from your most recent post, then rename the folder relating to the specific post.\nAfter, open the folder and you should see a qmd file, open it and start typing\nRender\nThen Publish and Push to Git\n\nSecret tip: I got the words to be seperate by using a (-) key and putting a space between each line\nHow to install packages? To install packages use the install.packages (““) function , you want to make sure that the package you want to install is in quotation marks so that it completes properly. Secret tip: When you want to launch the packages you could use the library () function but it has to be completely installed. Otherwise use the ?:: function (written in your physical notebook )\nThere are different types of objects as well that may cause you (me lol ) to have problems in the future , so let me help you out.\nThere are three objects that I know of at this point in the course and they’re : names,age and date\n\nFor names , make sure to put the name in quotation marks\nFor objects such as age , do not put in quotation because it will read it as text rather than number\n\nI will type more tips in as I learn\nUntil we meet again !\n-For dates use the arrow and sys.date function. For example, for a holiday such as thanksgiving you can put thanksgiving–sys.date"
+  },
+  {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Welcome To My Blog",
@@ -25,7 +32,7 @@
     "href": "index.html",
     "title": "Alexus Quarto blog (Assignment 1)",
     "section": "",
-    "text": "First Blog Post\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 6, 2023\n\n\nAlexus Lawrence\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 6, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nFeb 3, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Second Blog Post\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 14, 2023\n\n\nAlexus Lawrence\n\n\n\n\n\n\n  \n\n\n\n\nFirst Blog Post\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 6, 2023\n\n\nAlexus Lawrence\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 6, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nFeb 3, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",

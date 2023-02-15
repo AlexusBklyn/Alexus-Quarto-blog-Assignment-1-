@@ -1,0 +1,46 @@
+---
+title: "Second Blog Post"
+author: "Alexus Lawrence"
+date: "2023-02-14"
+categories: [news, code, analysis]
+image: "tips.jpg"
+---
+**Tips for making a new post**
+
+- Copy the folder from your most recent post, then rename the folder relating to the specific post.
+
+- After, open the folder and you should see a qmd file, open it and start typing 
+
+- Render 
+
+- Then Publish and Push to Git 
+
+**Secret tip: I got the words to be seperate by using a (-) key and putting a space between each line**
+
+**How to install packages?**
+To install packages use the install.packages ("") function , you want to make sure that the package you want to install is in quotation marks so that it completes properly. 
+**Secret tip**: When you want to launch the packages you could use the library () function but it has to be completely installed. Otherwise use the ?:: function (written in your physical notebook )
+
+
+There are different types of objects as well that may cause you (me lol ) to have problems in the future , so let me help you out. 
+
+There are three objects that I know of at this point in the course and they're : names,age and date 
+
+- For names , make sure to put the name in quotation marks 
+
+- For objects such as age , do not put in quotation because it will read it as text rather than number 
+
+I will type more tips in as I learn 
+
+
+Until we meet again !
+
+-For dates use the arrow and sys.date function. For example, for a holiday such as thanksgiving you can put thanksgiving--sys.date 
+
+
+
+
+
+
+
+
