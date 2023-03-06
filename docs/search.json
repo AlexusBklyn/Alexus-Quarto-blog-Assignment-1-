@@ -32,7 +32,7 @@
     "href": "index.html",
     "title": "Alexus Quarto blog (Assignment 1)",
     "section": "",
-    "text": "Second Blog Post\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 14, 2023\n\n\nAlexus Lawrence\n\n\n\n\n\n\n  \n\n\n\n\nFirst Blog Post\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 6, 2023\n\n\nAlexus Lawrence\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 6, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nFeb 3, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Third Blog Post\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMar 2, 2023\n\n\nAlexus Lawrence\n\n\n\n\n\n\n  \n\n\n\n\nSecond Blog Post\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 14, 2023\n\n\nAlexus Lawrence\n\n\n\n\n\n\n  \n\n\n\n\nFirst Blog Post\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 6, 2023\n\n\nAlexus Lawrence\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nFeb 6, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nFeb 3, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -40,5 +40,26 @@
     "title": "About",
     "section": "",
     "text": "About this blog"
+  },
+  {
+    "objectID": "posts/Third Post/index.html",
+    "href": "posts/Third Post/index.html",
+    "title": "Third Blog Post",
+    "section": "",
+    "text": "Be able to make a new .qmd document\n\nYes I can do this (instructions include saving it to my personal folder)\nOpen R studio\nOpen R Project and press on Data assignments 2023\nGo to the file section -Create new folder with desired name (‘assignment 3’) -Press on the folder and then on the top left with paper + add sign icon -This should result in a qmd file, save it with the blue box icon -This exercise will be visible on my github insert simple markdown plain text"
+  },
+  {
+    "objectID": "posts/Third Post/index.html#here-is-the-second-level-header",
+    "href": "posts/Third Post/index.html#here-is-the-second-level-header",
+    "title": "Third Blog Post",
+    "section": "Here is the second level header",
+    "text": "Here is the second level header\n\nBe aware of resources to help you learn more about markdown options.\nBe able to insert an R code chunk, and show the output in the rendered document.\n\n\nmacro for quick insert\n\n\nRunning R code chunks in a qmd\n\n\npressing play\ncopy/paste into console\nhighlight then command-enter (mac)\nprecedence issues (first to last)\n\n\nBe aware of R code chunk options, and how to use eval, messages, error, warning, and echo.\nBe able to set code chunk options per chunk, and/or for the whole document. Understand rules for precedence (which options will apply if both are set.)\nWrite inline r code.\nExplain how the rendering environment is different from the Rstudio environment.\nBe aware of more advanced quarto options for html documents, and try some of the options."
+  },
+  {
+    "objectID": "posts/Third Post/index.html#second-level-header",
+    "href": "posts/Third Post/index.html#second-level-header",
+    "title": "Third Blog Post",
+    "section": "Second level header",
+    "text": "Second level header\nYou can make list using : *,-,or +\nLike this:"
   }
 ]

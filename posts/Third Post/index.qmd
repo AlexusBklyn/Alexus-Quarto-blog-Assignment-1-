@@ -1,0 +1,217 @@
+---
+title: "Third Blog Post"
+author: "Alexus Lawrence"
+date: "2023-03-02"
+categories: [news, code, analysis]
+image: "image.jpg"
+format:
+  html:
+    toc: true
+---
+
+# New Qmd document 
+
+1.  **Be able to make a new .qmd document**
+    -   Yes I can do this (instructions include saving it to my personal folder)
+    -   Open R studio
+    -   Open R Project and press on Data assignments 2023
+    -   Go to the file section -Create new folder with desired name ('assignment 3') -Press on the folder and then on the top left with paper + add sign icon -This should result in a qmd file, save it with the blue box icon -This exercise will be visible on my github insert simple markdown plain text
+
+------------------------------------------------------------------------
+
+# Render qmd doc
+
+2.  **Be able to render a .qmd document**
+
+-   Yes, I can render a .qmd document
+-   Go to file, open file , locate the desired qmd file that you want to have access to -Once opened , you can locate the render option next to the magnifying glass
+-   You can use the console and click on the build option & then render website
+
+------------------------------------------------------------------------
+
+# Source editor vs Visual editor view 
+
+3.  **Explain the difference between the source editor view and visual editor view in Rstudio.**
+
+The source editor and visual editor are different because source editor is for plain text while visual editor represents the output of those text .. such as dashes being "translated" as bullet points
+
+------------------------------------------------------------------------
+
+# Markdown plain text options
+
+4.  **Be able to insert simple markdown plain text (headers, lists, paragraphs), and render the document.**
+
+# First header
+
+## Second level header
+
+You can make list using : \*,-,or +
+
+**Like this**:
+
+# Grocery Fruit Store lists
+
+-   Bananas
+-   Oranges
+-   Peaches
+-   Pineapples
+-   Apples
+
+We can also make paragraphs in r, you just simply type the text ! To get to the next sentence you just press enter but if you would like to indent the next paragraph use command I.
+
+To render the document after, click the render button.
+
+----------------------------------------
+
+# Resources for markdown (**Includes clickable link**)
+
+5.  **Be aware of resources to help you learn more about markdown options.**
+
+This link has available resources and tips that helps with markdown [Click Here](https://quarto.org/docs/authoring/markdown-basics.html)
+
+-----------------------
+
+# Insert chunk and display output 
+
+ 6. **Be able to insert an R code chunk, and show the output in the rendered document. - macro for quick insert** 
+ 
+ 
+ To insert an R code chunk I can use either cmd+option+I or use the +c option (green box) on the upper right hand corner
+
+------------------------
+
+# Chunks in qmd doc
+
+7.  **Running R code chunks in a qmd**
+
+
+```{r}
+#This is another r code chunk 
+#Pressing play on an r code chunk will run that specific chunk, the play button is on the upper right hand corner 
+
+```
+
+
+```{r}
+#Pressing Play 
+
+4+2
+```
+
+```{r}
+#copy/paste into console
+```
+
+-   copy/paste into console
+-   highlight then command-enter (mac)
+-   precedence issues (first to last)
+
+---------------------------------------------------------------
+
+# How to use eval, message, error , warning and echo options
+
+8.  **Be aware of R code chunk options, and how to use eval, messages, error, warning, and echo.**
+
+```{r}
+2+3 
+```
+
+This is going to show an output but if i were to use the eval (false option), it will not show the output (**see below**)
+
+```{r}
+#| eval: false
+#| echo: true
+2+3
+```
+
+Notice how when the eval is set to false and echo is set to true , the output is not shown but the source code is shown. Now lets try when both are set to false. (see below, **hint: you should see nothing!**)
+
+```{r}
+#| eval: false
+#| echo: false
+
+2+3
+```
+
+For the messages option , we will format it just as we did for the error and echo options. 
+
+First let's start by trying to call a package and have the message pop up. 
+
+```{r}
+library(dplyr)
+#| eval: true
+#| echo: true
+```
+
+The package shows a messages but if I set message to false then I wouldn't see it , **see below** 
+
+```{r}
+#| eval: true
+#| echo: true
+#| message: false
+
+library(dplyr)
+```
+
+What about if we have an error? Can we show the error without it stopping our rendering process?
+
+
+Lets try to add a letter to a number  , to make it display an error 
+
+```{r}
+#| eval: true
+#| echo: true
+#| error: true
+
+"b"+ 5
+
+```
+
+When setting the message and warning to false, it will not display in output 
+
+
+-------------------------------------------------------
+
+
+# Chunk options 
+
+9.  **Be able to set code chunk options per chunk, and/or for the whole document. Understand rules for precedence (which options will apply if both are set.)**
+
+Execute in yml at the top and the chunk has priority (precedence) over the global options. 
+
+
+-------------------------------------------
+
+# Inline r code example 
+
+10. **Write inline r code.**
+
+For an exercise I will assign numbers to variables
+
+```{r}
+"a"<- 2
+"b"<- 3
+"c"<- 4
+```
+
+I am going to call the value of b by using the back tick r and then the variable 'r b' , it will make this output 
+
+
+The value of b is `r b`
+
+# Difference in rendering environment and r studio environment
+
+11. **Explain how the rendering environment is different from the Rstudio environment.**
+
+The difference between the rendering environment and the r studio environment is that the rendering environment will automatically display assigned variables, whereas the rendering environment will set a new r process. Additionally, if you were to reset r , the r studio environment will be cleared but for the rendering environment it will still be the same (**hint: This is because with render it is a separate process **)
+
+
+# html options 
+
+
+12. **Be aware of more advanced quarto options for html**
+
+To display this , I will add header by using the toc (table of contents) option so that my blog is easier to read!
+
+
+That's all for this post !
