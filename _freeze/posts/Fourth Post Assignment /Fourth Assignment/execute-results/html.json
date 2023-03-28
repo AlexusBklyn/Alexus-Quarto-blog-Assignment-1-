@@ -1,0 +1,14 @@
+{
+  "hash": "14e20628ccebcd12119e1e301698c661",
+  "result": {
+    "markdown": "---\ntitle: \"Third Blog Post\"\nauthor: \"Alexus Lawrence\"\ndate: \"2023-03-26\"\ncategories: [news, code, analysis]\nimage: \"image.jpg\"\n---\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
