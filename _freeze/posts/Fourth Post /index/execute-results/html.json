@@ -1,0 +1,14 @@
+{
+  "hash": "4296d9aff18d9e9c848f90e36c8dd0a9",
+  "result": {
+    "markdown": "---\ntitle: \"Fourth Blog Post \"\nauthor: \"Alexus Lawrence\"\ndate: \"2023-03-11\"\ncategories: [news, code, analysis]\nimage: \"image.jpg\"\nformat:\n  html:\n    toc: true\n---\n\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

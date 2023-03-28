@@ -9,7 +9,3 @@ image: "image.jpg"
 Hi, My name is Alexus Lawrence and this is my first blog post. I enjoy singing , spending time with my friends and writing poems when I have the free time . At this time in my life I am pretty sad but if I can make a personal blog and write journal entries about my life , it would help. I am going to do everything to learn coding so I can do just that !
 
 Chao!
-
-
-
-

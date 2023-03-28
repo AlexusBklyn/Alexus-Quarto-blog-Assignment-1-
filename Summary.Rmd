@@ -1,0 +1,25 @@
+---
+title: "Summary.rmd"
+output: html_document
+date: "2023-03-06"
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)   # data wrangling functions
+library(rtweet)      # for searching tweets
+library(kableExtra)  # for nice tables```
+```
+
+
+```{r}
+tweets <- search_tweets(q = "#NationalComingOutDay", 
+                        n = 30000, 
+                        include_rts = FALSE)
+```
+
+
+
+```{r}
+saveRDS(tweets, file = "data/ncod_tweets.rds")
+```
+
