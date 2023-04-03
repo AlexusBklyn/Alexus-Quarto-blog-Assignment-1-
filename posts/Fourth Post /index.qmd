@@ -1,8 +1,172 @@
 ---
 title: "Fourth Blog Post "
 author: "Alexus Lawrence"
-date: "2023-03-11"
+date: "2023-03-29"
 categories: [news, code, analysis]
 image: "image.jpg"
 ---
+
 **Hello Welcome to My Fourth Assignment**
+
+Today I will be teaching you how to use data and visualize it using the exercises given to us in the textbook .
+
+### **Datatypes**
+
+Data types by definition are data represented by an object; Examples included integers, double, character, logical and complex (numbers with real and imaginary parts). Additionally these numbers can integers and doubles (numeric).
+
+**Integers are** : 2,3,4
+
+**Doubles are** : 12,15,19
+
+**Characters are**:
+
+Characters are text that can be shown as a string (**must be enclosed by quotation marks**)
+
+For example
+
+```{r}
+typeof("cheese")
+
+#|eval:true 
+#|echo:true
+```
+
+This works with integers as well (if an integer has quotation marks surrounding it , it is then considered a character), **see example below**
+
+```{r}
+typeof("1")
+typeof("4")
+
+#|eval:true 
+#|echo:true
+
+
+```
+
+**Logical statements are** :
+
+Logical statements are **True** and **False** , they are also referred to as Boolean. See the example below.
+
+When using the **as.logical function** , **0** represents the **false** value and the **1** value represents the **true** value. **See the example below**
+
+```{r}
+
+randomdance<-list(
+  words="shake","my","foot"
+)
+
+randomdance=as.logical(0)  #Set random dance list to false values 
+  
+str(randomdance)          #call random dance using str and output value 
+
+randomdance=as.logical(1)  #Set random dance list to true value 
+
+str(randomdance)         #call random dance using str and output true value
+
+#|eval:true 
+#|echo:true
+```
+
+------------------------------------------------------------------------
+
+### **Tidy data**
+
+**Tidy data** is a format that organizes data in a specific structure.
+
+Each column represents a variable
+
+Each row represents an observation
+
+Each cell represents a value
+
+**I will display this using the exercises from the text book**
+
+**Hint:** Remember to load dyplr and set eval & echo to true to display the code and output ( you should've learned this from my week 3 blog)
+
+```{r}
+#Load all of the packages using the library function
+
+library(tidyverse) 
+library(patchwork) 
+library(ggthemes)  
+library(lubridate) 
+library(knitr)
+library(kableExtra)
+```
+
+**1) Read in the data set**
+
+```{r}
+#Read in the data set for the exercise and save it to the survey_data
+
+survey_data <- read_csv("https://psyteachr.github.io/ads-v2/data/survey_data.csv")
+#|eval:true
+#|echo:false
+```
+
+**2)View the top of the data set**
+
+```{r}
+#See what the data looks like using head function 
+
+head(survey_data)
+
+#This would be considered a tidy data because each column represents a variable, rows are observation and each cell is a value.
+#|eval:true
+#|echo:true
+```
+
+**3)Change the column type, make data more concise**
+
+```{r}
+#Change column types 
+
+survey_col_types <- cols(
+  caller_id = col_character(),
+  employee_id = col_character(),
+  call_start = col_datetime(format = ""),
+  wait_time = col_double(),
+  call_time = col_double(),
+  issue_category = col_factor(levels = c("tech", "sales", "returns", "other")), #Update this column to make the issue clear to viewers 
+  satisfaction = col_integer()
+)
+
+# We have to re-import the data because it is updated 
+survey_data <- read_csv("https://psyteachr.github.io/ads-v2/data/survey_data.csv",
+                        col_types = survey_col_types)
+
+
+#Call the head of the graph and use the spec function to view updated column types 
+
+spec(survey_data)   #Using spec() function to see column types 
+head(survey_data)   #Using head function to view the changes 
+
+#|eval:true
+#|echo:true
+```
+
+Now that I have the updated columns and the table is in the correct format , I can now make a gg plot.
+
+___________________________________________________________
+
+### **GG Plot**
+
+```{r}
+#Call ggplot to get blank canvas 
+ggplot()
+
+#Edit GG plot to add details to the graph 
+
+#Aesthetics used to add axis titles to the graph 
+
+ggplot(survey_data, aes(x = issue_category,fill=issue_category)) +
+  geom_bar()
+   
+#|eval:true
+#|echo:true
+```
+**This is a basic plot demonstrating the amount of issues that the customers had. I can conclude that the customers had the most issues with technology amongst other problems** 
+
+Check out my Blog 5 for more complex graphs.
+
+Bye for now !

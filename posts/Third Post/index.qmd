@@ -9,7 +9,7 @@ format:
     toc: true
 ---
 
-# New Qmd document 
+# New Qmd document
 
 1.  **Be able to make a new .qmd document**
     -   Yes I can do this (instructions include saving it to my personal folder)
@@ -29,7 +29,7 @@ format:
 
 ------------------------------------------------------------------------
 
-# Source editor vs Visual editor view 
+# Source editor vs Visual editor view
 
 3.  **Explain the difference between the source editor view and visual editor view in Rstudio.**
 
@@ -61,7 +61,7 @@ We can also make paragraphs in r, you just simply type the text ! To get to the 
 
 To render the document after, click the render button.
 
-----------------------------------------
+------------------------------------------------------------------------
 
 # Resources for markdown (**Includes clickable link**)
 
@@ -69,28 +69,25 @@ To render the document after, click the render button.
 
 This link has available resources and tips that helps with markdown [Click Here](https://quarto.org/docs/authoring/markdown-basics.html)
 
------------------------
+------------------------------------------------------------------------
 
-# Insert chunk and display output 
+# Insert chunk and display output
 
- 6. **Be able to insert an R code chunk, and show the output in the rendered document. - macro for quick insert** 
- 
- 
- To insert an R code chunk I can use either cmd+option+I or use the +c option (green box) on the upper right hand corner
+6.  **Be able to insert an R code chunk, and show the output in the rendered document. - macro for quick insert**
 
-------------------------
+To insert an R code chunk I can use either cmd+option+I or use the +c option (green box) on the upper right hand corner
+
+------------------------------------------------------------------------
 
 # Chunks in qmd doc
 
 7.  **Running R code chunks in a qmd**
-
 
 ```{r}
 #This is another r code chunk 
 #Pressing play on an r code chunk will run that specific chunk, the play button is on the upper right hand corner 
 
 ```
-
 
 ```{r}
 #Pressing Play 
@@ -106,7 +103,7 @@ This link has available resources and tips that helps with markdown [Click Here]
 -   highlight then command-enter (mac)
 -   precedence issues (first to last)
 
----------------------------------------------------------------
+------------------------------------------------------------------------
 
 # How to use eval, message, error , warning and echo options
 
@@ -133,9 +130,9 @@ Notice how when the eval is set to false and echo is set to true , the output is
 2+3
 ```
 
-For the messages option , we will format it just as we did for the error and echo options. 
+For the messages option , we will format it just as we did for the error and echo options.
 
-First let's start by trying to call a package and have the message pop up. 
+First let's start by trying to call a package and have the message pop up.
 
 ```{r}
 library(dplyr)
@@ -143,7 +140,7 @@ library(dplyr)
 #| echo: true
 ```
 
-The package shows a messages but if I set message to false then I wouldn't see it , **see below** 
+The package shows a messages but if I set message to false then I wouldn't see it , **see below**
 
 ```{r}
 #| eval: true
@@ -155,8 +152,7 @@ library(dplyr)
 
 What about if we have an error? Can we show the error without it stopping our rendering process?
 
-
-Lets try to add a letter to a number  , to make it display an error 
+Lets try to add a letter to a number , to make it display an error
 
 ```{r}
 #| eval: true
@@ -167,22 +163,19 @@ Lets try to add a letter to a number  , to make it display an error
 
 ```
 
-When setting the message and warning to false, it will not display in output 
+When setting the message and warning to false, it will not display in output
 
+------------------------------------------------------------------------
 
--------------------------------------------------------
-
-
-# Chunk options 
+# Chunk options
 
 9.  **Be able to set code chunk options per chunk, and/or for the whole document. Understand rules for precedence (which options will apply if both are set.)**
 
-Execute in yml at the top and the chunk has priority (precedence) over the global options. 
+Execute in yml at the top and the chunk has priority (precedence) over the global options.
 
+------------------------------------------------------------------------
 
--------------------------------------------
-
-# Inline r code example 
+# Inline r code example
 
 10. **Write inline r code.**
 
@@ -194,8 +187,7 @@ For an exercise I will assign numbers to variables
 "c"<- 4
 ```
 
-I am going to call the value of b by using the back tick r and then the variable 'r b' , it will make this output 
-
+I am going to call the value of b by using the back tick r and then the variable 'r b' , it will make this output
 
 The value of b is `r b`
 
@@ -203,15 +195,12 @@ The value of b is `r b`
 
 11. **Explain how the rendering environment is different from the Rstudio environment.**
 
-The difference between the rendering environment and the r studio environment is that the rendering environment will automatically display assigned variables, whereas the rendering environment will set a new r process. Additionally, if you were to reset r , the r studio environment will be cleared but for the rendering environment it will still be the same (**hint: This is because with render it is a separate process **)
+The difference between the rendering environment and the r studio environment is that the rendering environment will automatically display assigned variables, whereas the rendering environment will set a new r process. Additionally, if you were to reset r , the r studio environment will be cleared but for the rendering environment it will still be the same (**hint: This is because with render it is a separate process** )
 
-
-# html options 
-
+# html options
 
 12. **Be aware of more advanced quarto options for html**
 
 To display this , I will add header by using the toc (table of contents) option so that my blog is easier to read!
-
 
 That's all for this post !
