@@ -1,0 +1,197 @@
+---
+title: "Fifth Blog Post "
+author: "Alexus Lawrence"
+date: "2023-03-29"
+categories: [news, code, analysis]
+image: "image.jpg"
+---
+
+## Hello welcome to my fifth blog post !
+
+Today, I will be demonstrating to you my knowledge on data import.
+
+**The main goals of this blog post are :**
+
+1)Show that I understand the major topics of this chapter including set up, viewing data and so much more!
+
+2)Demonstrate my understanding of the specific chapters titled "built in data" and "writing data"
+
+**To demonstrate this I will be completing the exercised assigned in the text book**
+
+------------------------------------------------------------------------
+
+### Data Import
+
+**Data import is the act of bringing in data and assessing it**
+
+------------------------------------------------------------------------
+
+## Load the package 
+
+First, I am going to load the necessary packages needed for this exercise, as we do in every post.
+
+```{r}
+#Load Packages 
+
+library(rio)
+library(tidyverse)
+
+```
+
+
+## Import the data
+
+Next, I want to import the data and be aware of the data set that I am using. In this case **Star wars** is an already built-in data set, so I can use **data(starwars)** to import the data 
+
+
+```{r}
+#Import data frame/already built in 
+data("starwars")
+
+#Export the data 
+#To export the data that is already built in you will follow export(the name of data frame (previously assigned), the csv file and where). For this example it will look like this
+
+export(starwars,"data/starwars.csv")
+
+
+#After exporting the data, I now have to import the data using read_csv. The instructions also states that I should assign the pathway to the object starwars.  
+
+starwars<-read_csv("data/starwars.csv")
+
+```
+
+For the sake of the assignment I will use **read_csv** as directed but I also wanted to show you how to use rio::import to the csv file.
+
+```{r}
+starwars_csv<- import("data/starwars.csv")  # comma-separated values
+
+#|echo:true
+#|eval:true
+
+```
+
+I'm going to reload the variables set above for the assignment 
+
+```{r}
+data("starwars")
+export(starwars,"data/starwars.csv")
+starwars<-read_csv("data/starwars.csv")
+
+#|echo:true
+#|eval:true
+```
+
+##View the data 
+
+Now that I've imported and exported the data , I would like to view it and see what is included in the data set. Using the view function I will view the data and it will output 
+
+You can view it in the console pane but I won't put it in the script because of the pop up. Instead I will provide a screenshot of the output.
+
+
+
+```{r}
+library(knitr)
+#When using view(starwars), it will show the data in a grid-like fashion 
+
+
+
+knitr::include_graphics("/Users/Alexus/Desktop/Screenshot of View function.png")
+
+#|echo:true
+#|eval:true
+```
+
+##Print 
+
+Print data should be used in the console and will print out only the first ten rows of the data. 
+
+
+##Glimpse 
+
+The glimpse() function is used to show the columns as rows , this is a sideway view which is beneficial because some of the data has a lot of columns.
+
+```{r}
+glimpse(starwars)
+
+#|echo:true
+#|eval:true
+```
+
+##Summary 
+
+The summary() function gives us an overview of the data , specifically for values such as mean , medium , maximum and so forth. This is useful for interpreting if R mistook certain values as integers.
+
+
+```{r}
+summary(starwars)
+#|echo:true
+#|eval:true
+```
+
+###Return back to assignment (Changing column type and graph)
+
+In this part of the assignment, I will change the column types inside of the data. 
+
+**Directions: Convert the columns  hair_color, skin_color, eye_color, sex, gender, homeworld, and species to col(factor)**
+
+First : I am going to use the spec function so that I can view the current variable types.
+
+Second: Re-import the data file with the corrected variable types so that it is updated 
+
+
+```{r}
+spec(starwars)
+corrected_cols<-cols(
+  name = col_character(),
+  height = col_double(),
+  mass = col_double(),
+  hair_color = col_factor(),
+  skin_color = col_factor(),
+  eye_color = col_factor(),
+  birth_year = col_double(),
+  sex = col_factor(),
+  gender = col_factor(),
+  homeworld = col_factor(),
+  species = col_factor(),
+  films = col_character(),
+  vehicles = col_character(),
+  starships = col_character()
+)
+
+starwars <- read_csv("data/starwars.csv", col_types = corrected_cols)
+#|echo:true
+#|eval:true
+```
+
+###Writing in data 
+
+Lastly, I will be demonstrating my knowledge of writing data by creating a table that includes my completed and missing assignments. Completing assignment has been very hard for me with personal life but it's ok .. this table will help me visually see it. 
+
+```{r}
+assignments_completed<-tibble(
+  assignments = c("Assignment 5", "Assignment 6", "Assignment 7-9","Midterm 1"),
+  completed = c("completed", "not completed", "not completed","not completed"),
+)
+
+view(assignments_completed)
+
+#Below I will show a screenshot of this table 
+
+#I am using file.choose() as a shortcut to find the path of my document 
+
+knitr::include_graphics("/Users/Alexus/Desktop/Assignments completion table.png")
+#|echo:true
+#|eval:true
+```
+
+
+**That is all for my post today, chao!!**
+
+
+
+
+
+
+
+
+
