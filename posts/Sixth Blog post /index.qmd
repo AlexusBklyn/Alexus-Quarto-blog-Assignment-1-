@@ -1,9 +1,327 @@
 ---
-title: "Sixth Blog Post "
+title: "Week 6 Data Summaries "
 author: "Alexus Lawrence"
-date: "2023-03-02"
+date: "2023-04-13"
 categories: [news, code, analysis]
 image: "image.jpg"
 ---
 
+**Hello, welcome to my new blog post**
 
+In this post I will be explaining to you the main topics included in week 6. These topics include summarizing data , using in-line coding, max/mean/min and so much more! Let's get into it!
+
+## 5.1 Set-Up
+
+The first step before starting this exercise is to load the necessary packages.
+
+```{r}
+library(tidyverse)   # data wrangling functions
+library(rtweet)      # for searching tweets
+library(kableExtra)  # for nice tables
+```
+
+## 5.2.1 R-objects
+
+The next step in this set-up is to download the data and save it into the directory. Load the data after that using the readRS function.
+
+```{r}
+tweets<- readRDS(file = "/Users/Alexus/Downloads/ncod_tweets.rds")
+```
+
+Before I do anything with the data , I want to view the data and what it consist of using the glimpse() function.
+
+```{r}
+#| eval: false
+glimpse(tweets)
+
+
+```
+
+```{r}
+head(tweets)
+```
+
+## 5.3 summarise
+
+Summarise() is a function in r that allows you to calculate things such as the mean, median and much more! Lets try to calculate the mean, median, min and max of the re-tweet count
+
+```{r}
+#assign it to a variable , use summarise()function
+retweet_summary <- summarise(tweets, 
+                           mean_retweet = mean(retweet_count),
+                           median_retweet = median(retweet_count),
+                           min_retweet = min(retweet_count),
+                           max_retweet = max(retweet_count))
+```
+
+We can then print out the what we just assigned utilizing kable
+
+```{r}
+knitr::kable(retweet_summary) 
+```
+
+We can find different values of the data , such as the standard deviations of the data .
+
+```{r}
+retweet_summary <- summarise(tweets, 
+                           mean_retweet = mean(retweet_count),
+                           median_retweet = median(retweet_count),
+                           min_retweet = min(retweet_count),
+                           max_retweet = max(retweet_count),
+                           sd_retweet= sd(retweet_count)
+                            )
+```
+
+Let's print this out using the kable function again to see the new table
+
+```{r}
+knitr::kable(retweet_summary) 
+
+```
+
+We can now try plotting a histogram using the data in the textbook but with my spin to it of course !
+
+```{r}
+ggplot(tweets, aes(x = retweet_count)) + #y-value was not included so that the counts can be automatic (hint: look at the "y-value" of the graph)
+  geom_histogram(bins = 25) + 
+  scale_x_continuous(trans = "pseudo_log", 
+                     breaks = c(0, 1, 10, 100, 1000, 10000)) #for the breaks of the graph (to separate the counts )
+```
+
+The textbook also mentions that we could add extra functions inside of the summarise() such as **n** which counts the number of rows for a specific column (view below) and also the dates they were created.
+
+```{r}
+retweet_summary <- tweets %>%
+  summarise(mean_retweet = mean(retweet_count),
+            median_retweet= quantile(retweet_count, .5),
+            n = n(),
+            min_date = min(created_at),
+            max_date = max(created_at))
+
+```
+
+Now let's put the retweet summary in a table again to see what it looks like now !
+
+```{r}
+knitr::kable(retweet_summary) 
+
+```
+
+OOH that looks a little messy , lets try to view it using the glimpse function so that we get an idea of how the data looks.
+
+```{r}
+glimpse(retweet_summary)
+```
+
+## 5.3.1 \$ Operator
+
+The \$ operator is used when wanting to selecting specific columns from a data set
+
+Lets try to find select the column of source from the tweets data file.
+
+```{r}
+#| eval: false
+tweets$source
+
+
+```
+
+As you can see , it gives you all the entries for that specific column
+
+Now let's try from the retweet_summary data set that I created
+
+```{r}
+retweet_summary$min_date
+retweet_summary$max_date
+```
+
+Wait but what if I wanted only a specific entry from that column?
+
+That is where the use of brackets are important
+
+```{r}
+tweets$screen_name[7]
+```
+
+As you can see I requested for the 7th screen name of the column and was able to get it without the print out of the other values.
+
+## 5.3.2 Pipes
+
+In this section we will speak about pipes , this is a function that allows you to do one output and then the next. In the textbook, the author describes pipes as a "and then" function meaning do this then this.
+
+For example let's ask R to show me the mean of the retweet count "and then" show me the median of it.
+
+```{r}
+#Assign it to a variable, make it easier for me to call
+quoted_retweet<-tweets %>% #I used tweets on the left side b/c that is the data frame that I am selecting it from
+  summarise(mean_quoted_retweet = mean(quoted_retweet_count), #I am going to summarise it 
+            median_quoted_retweet= median(quoted_retweet_count))
+```
+
+Now let's view it using the glimpse() function
+
+```{r}
+glimpse(quoted_retweet)
+```
+
+It is showing NA because there isn't enough values to make a median or mean.
+
+## 5.3.3 Inline Coding
+
+Inline coding is used when you want to make a statement about your data set using coding inside of the sentence. I know this is confusing , allow me to demonstrate.
+
+```{r}
+#First we will write the in line coding for the dates of the retweets
+retweet_from<-retweet_summary$min_date %>% #assign to variable so easier to use in sentence 
+   format("%d %B, %Y") #Using format to give us the date organized by date,month,year
+retweet_to<-retweet_summary$max_date %>%
+  format("%d %B, %Y")
+  
+  
+```
+
+Now that the code is in , lets put it in a sentence :
+
+There were `r retweet_summary$n` re-tweets between `r retweet_from` and `r retweet_to`.
+
+To see the output of this you can use the control shift k (on mac) to knit the document.
+
+## 5.4 Counting
+
+Counting is a function that can be used to count categorical data , this is efficient because it helps you know the number of non-numerical items.
+
+For example, if I wanted to know the amount of android users and Iphone users in the data , I can use this code below.
+
+```{r}
+#sum is used to give me a total 
+sum(stringr::str_count(tweets$source, pattern = "Twitter for iPhone"))
+sum(stringr::str_count(tweets$source, pattern = "Twitter for Android"))
+```
+
+I can also produce a simpler example that shows the screen name of individuals with the number of re-tweets.
+
+```{r}
+retweets_per_user <- tweets %>%
+  count(screen_name,retweet_count, sort = TRUE)
+
+head(retweets_per_user)
+```
+
+# Inline coding part 2
+
+In this part of inline coding we are going to use nrow, pull and slice.
+
+**nrow:** is used to count number of rows in a data set **slice:** is used for a specific row of data **pull** is used to select a specific variable
+
+Let me show you how to use this !
+
+```{r}
+tweeters <- nrow(retweets_per_user)
+best_tweeter <- slice(retweets_per_user, 1) %>% 
+  pull(screen_name)
+best_tweeter_n <- slice(retweets_per_user, 1) %>% 
+  pull(n)
+```
+
+There were `r tweeters` unique accounts tweeting about #NationalComingOutDay. `r best_tweeter` was the most prolific tweeter, with `r best_tweeter_n` tweets.
+
+## Grouping
+
+The grouping function is used to group data by a variable from the data set For example, in this example we view the verified users and the number of retweets.
+
+```{r}
+
+
+tweets_grouped <- tweets %>% #assign to variable
+  group_by(verified)
+
+verified <- tweets_grouped %>%
+  summarise(count = n(),
+            mean_retweets = mean(retweet_count)) %>%
+  ungroup()
+
+verified
+```
+
+## Data Nyc Exercise
+
+This Data NYC exercise is to show a deeper understanding of the chapter using data outside of the textbook. This data will be taken from [Data NYC Website](https://opendata.cityofnewyork.us).
+
+Professor instructed me to obtain, import, summarize, and plot data.
+
+NYC School Inspection Data
+
+<https://data.cityofnewyork.us/Health/DOHMH-School-Cafeteria-inspections-2020-Present-/5ery-qagt/explore>
+
+
+
+## Import Data NYC
+
+Import the inspection data usin rio
+DOHMH_School_Cafeteria_inspections__2020_-_Present_.csv
+
+
+```{r}
+inspection_nyc<-read.csv("/Users/Alexus/Downloads/DOHMH_School_Cafeteria_inspections__2020_-_Present_.csv")
+```
+
+## Summarise inspection data 
+
+Next, I am going to summarize the data but first I want to view what is included in the data, to do this I am going to use the glimpse() function.
+
+
+```{r}
+glimpse(inspection_nyc)
+```
+
+# Directions for Data NYC 
+
+This blog post is pretty lengthy so I am going to make this exercise pretty simple. For this data set I will be making a statement about the time frame of the inspections using inline coding; Then , I will make a graph counting the number of inspections per city.
+
+**Dates Inspection **
+
+I will find out the dates of the inspection using format and piping.
+
+```{r}
+Data_inspectionsummary<- inspection_nyc %>%
+  summarise(min_inspectiondate = min(InspectionDate),
+            max_inspectiondate = max(InspectionDate))
+
+```
+
+```{r}
+Data_inspectionsummary$min_inspectiondate
+Data_inspectionsummary$max_inspectiondate
+```
+
+```{r}
+inspection_from<-Data_inspectionsummary$max_inspectiondate 
+inspection_to<-Data_inspectionsummary$max_inspectiondate
+```
+
+Now that the code is in , lets put it in a sentence :
+
+There inspections took place from  between `r inspection_from` and `r inspection_to`.
+
+
+# Coubt of inspection by city 
+
+```{r}
+inspection_per_city <- inspection_nyc %>%
+  count(Borough, sort = TRUE)
+
+head(inspection_per_city)
+```
+# Pie Chart of Data
+
+```{r}
+
+slices <- c(4699, 2250,1886, 16, 8)
+lbls <- c("Brooklyn", "Queens", "Manhattan", "Bronx", "Staten Island")
+pie(slices, labels = lbls, main="Pie Chart of Inspections by City")
+```
+
+# Interpretation of graph
+As you can see in this pie chart and from the data frame that I created above , Brooklyn  had the most inspections.
+
+Okay, that is all for this post!

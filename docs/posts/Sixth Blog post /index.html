@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Alexus Lawrence">
-<meta name="dcterms.date" content="2023-03-02">
+<meta name="dcterms.date" content="2023-04-13">
 
-<title>Alexus Quarto blog (Assignment 1) - Sixth Blog Post</title>
+<title>Alexus Quarto blog (Assignment 1) - Week 6 Data Summaries</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -105,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Sixth Blog Post</h1>
+      <h1 class="title">Week 6 Data Summaries</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">news</div>
                 <div class="quarto-category">code</div>
@@ -127,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 2, 2023</p>
+        <p class="date">April 13, 2023</p>
       </div>
     </div>
     
@@ -145,8 +208,460 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p><strong>Hello, welcome to my new blog post</strong></p>
+<p>In this post I will be explaining to you the main topics included in week 6. These topics include summarizing data , using in-line coding, max/mean/min and so much more! Let’s get into it!</p>
+<section id="set-up" class="level2">
+<h2 class="anchored" data-anchor-id="set-up">5.1 Set-Up</h2>
+<p>The first step before starting this exercise is to load the necessary packages.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)   <span class="co"># data wrangling functions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.0     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.1     ✔ tibble    3.2.0
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rtweet)      <span class="co"># for searching tweets</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'rtweet'
+
+The following object is masked from 'package:purrr':
+
+    flatten</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)  <span class="co"># for nice tables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'kableExtra'
+
+The following object is masked from 'package:dplyr':
+
+    group_rows</code></pre>
+</div>
+</div>
+</section>
+<section id="r-objects" class="level2">
+<h2 class="anchored" data-anchor-id="r-objects">5.2.1 R-objects</h2>
+<p>The next step in this set-up is to download the data and save it into the directory. Load the data after that using the readRS function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tweets<span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">"/Users/Alexus/Downloads/ncod_tweets.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Before I do anything with the data , I want to view the data and what it consist of using the glimpse() function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(tweets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tweets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 90
+  user_id       statu…¹ created_at          scree…² text  source displ…³ reply…⁴
+  &lt;chr&gt;         &lt;chr&gt;   &lt;dttm&gt;              &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  
+1 140740738414… 144801… 2021-10-12 20:12:27 Seanac… "#LG… Twitt…     139 &lt;NA&gt;   
+2 986008595622… 144801… 2021-10-12 20:11:52 _blayn… "Hus… Twitt…      52 &lt;NA&gt;   
+3 895105557048… 144801… 2021-10-12 20:11:40 ShiguS… "Wel… Twitt…      72 &lt;NA&gt;   
+4 114895848585… 144801… 2021-10-12 20:11:26 M_L_Ja… "My … Twitt…     179 &lt;NA&gt;   
+5 142997672889… 144801… 2021-10-12 20:11:17 LoboWo… "#Ca… Twitt…     243 &lt;NA&gt;   
+6 4730258930    144801… 2021-10-12 20:10:59 LogixTM "If … Twitt…     196 &lt;NA&gt;   
+# … with 82 more variables: reply_to_user_id &lt;chr&gt;, reply_to_screen_name &lt;chr&gt;,
+#   is_quote &lt;lgl&gt;, is_retweet &lt;lgl&gt;, favorite_count &lt;int&gt;,
+#   retweet_count &lt;int&gt;, quote_count &lt;int&gt;, reply_count &lt;int&gt;, hashtags &lt;list&gt;,
+#   symbols &lt;list&gt;, urls_url &lt;list&gt;, urls_t.co &lt;list&gt;,
+#   urls_expanded_url &lt;list&gt;, media_url &lt;list&gt;, media_t.co &lt;list&gt;,
+#   media_expanded_url &lt;list&gt;, media_type &lt;list&gt;, ext_media_url &lt;list&gt;,
+#   ext_media_t.co &lt;list&gt;, ext_media_expanded_url &lt;list&gt;, …</code></pre>
+</div>
+</div>
+</section>
+<section id="summarise" class="level2">
+<h2 class="anchored" data-anchor-id="summarise">5.3 summarise</h2>
+<p>Summarise() is a function in r that allows you to calculate things such as the mean, median and much more! Lets try to calculate the mean, median, min and max of the re-tweet count</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#assign it to a variable , use summarise()function</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>retweet_summary <span class="ot">&lt;-</span> <span class="fu">summarise</span>(tweets, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">mean_retweet =</span> <span class="fu">mean</span>(retweet_count),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">median_retweet =</span> <span class="fu">median</span>(retweet_count),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">min_retweet =</span> <span class="fu">min</span>(retweet_count),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">max_retweet =</span> <span class="fu">max</span>(retweet_count))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can then print out the what we just assigned utilizing kable</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(retweet_summary) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> mean_retweet </th>
+   <th style="text-align:right;"> median_retweet </th>
+   <th style="text-align:right;"> min_retweet </th>
+   <th style="text-align:right;"> max_retweet </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 3.166632 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2525 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>We can find different values of the data , such as the standard deviations of the data .</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>retweet_summary <span class="ot">&lt;-</span> <span class="fu">summarise</span>(tweets, </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">mean_retweet =</span> <span class="fu">mean</span>(retweet_count),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">median_retweet =</span> <span class="fu">median</span>(retweet_count),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">min_retweet =</span> <span class="fu">min</span>(retweet_count),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">max_retweet =</span> <span class="fu">max</span>(retweet_count),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">sd_retweet=</span> <span class="fu">sd</span>(retweet_count)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                            )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s print this out using the kable function again to see the new table</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(retweet_summary) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> mean_retweet </th>
+   <th style="text-align:right;"> median_retweet </th>
+   <th style="text-align:right;"> min_retweet </th>
+   <th style="text-align:right;"> max_retweet </th>
+   <th style="text-align:right;"> sd_retweet </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 3.166632 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2525 </td>
+   <td style="text-align:right;"> 35.8742 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>We can now try plotting a histogram using the data in the textbook but with my spin to it of course !</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tweets, <span class="fu">aes</span>(<span class="at">x =</span> retweet_count)) <span class="sc">+</span> <span class="co">#y-value was not included so that the counts can be automatic (hint: look at the "y-value" of the graph)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">25</span>) <span class="sc">+</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">trans =</span> <span class="st">"pseudo_log"</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>)) <span class="co">#for the breaks of the graph (to separate the counts )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The textbook also mentions that we could add extra functions inside of the summarise() such as <strong>n</strong> which counts the number of rows for a specific column (view below) and also the dates they were created.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>retweet_summary <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_retweet =</span> <span class="fu">mean</span>(retweet_count),</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">median_retweet=</span> <span class="fu">quantile</span>(retweet_count, .<span class="dv">5</span>),</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_date =</span> <span class="fu">min</span>(created_at),</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_date =</span> <span class="fu">max</span>(created_at))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let’s put the retweet summary in a table again to see what it looks like now !</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(retweet_summary) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> mean_retweet </th>
+   <th style="text-align:right;"> median_retweet </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:left;"> min_date </th>
+   <th style="text-align:left;"> max_date </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 3.166632 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 28626 </td>
+   <td style="text-align:left;"> 2021-10-10 00:10:02 </td>
+   <td style="text-align:left;"> 2021-10-12 20:12:27 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>OOH that looks a little messy , lets try to view it using the glimpse function so that we get an idea of how the data looks.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(retweet_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1
+Columns: 5
+$ mean_retweet   &lt;dbl&gt; 3.166632
+$ median_retweet &lt;dbl&gt; 0
+$ n              &lt;int&gt; 28626
+$ min_date       &lt;dttm&gt; 2021-10-10 00:10:02
+$ max_date       &lt;dttm&gt; 2021-10-12 20:12:27</code></pre>
+</div>
+</div>
+</section>
+<section id="operator" class="level2">
+<h2 class="anchored" data-anchor-id="operator">5.3.1 $ Operator</h2>
+<p>The $ operator is used when wanting to selecting specific columns from a data set</p>
+<p>Lets try to find select the column of source from the tweets data file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tweets<span class="sc">$</span>source</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As you can see , it gives you all the entries for that specific column</p>
+<p>Now let’s try from the retweet_summary data set that I created</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>retweet_summary<span class="sc">$</span>min_date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2021-10-10 00:10:02 UTC"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>retweet_summary<span class="sc">$</span>max_date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2021-10-12 20:12:27 UTC"</code></pre>
+</div>
+</div>
+<p>Wait but what if I wanted only a specific entry from that column?</p>
+<p>That is where the use of brackets are important</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>tweets<span class="sc">$</span>screen_name[<span class="dv">7</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "PankajK03650424"</code></pre>
+</div>
+</div>
+<p>As you can see I requested for the 7th screen name of the column and was able to get it without the print out of the other values.</p>
+</section>
+<section id="pipes" class="level2">
+<h2 class="anchored" data-anchor-id="pipes">5.3.2 Pipes</h2>
+<p>In this section we will speak about pipes , this is a function that allows you to do one output and then the next. In the textbook, the author describes pipes as a “and then” function meaning do this then this.</p>
+<p>For example let’s ask R to show me the mean of the retweet count “and then” show me the median of it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Assign it to a variable, make it easier for me to call</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>quoted_retweet<span class="ot">&lt;-</span>tweets <span class="sc">%&gt;%</span> <span class="co">#I used tweets on the left side b/c that is the data frame that I am selecting it from</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_quoted_retweet =</span> <span class="fu">mean</span>(quoted_retweet_count), <span class="co">#I am going to summarise it </span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">median_quoted_retweet=</span> <span class="fu">median</span>(quoted_retweet_count))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let’s view it using the glimpse() function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(quoted_retweet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1
+Columns: 2
+$ mean_quoted_retweet   &lt;dbl&gt; NA
+$ median_quoted_retweet &lt;int&gt; NA</code></pre>
+</div>
+</div>
+<p>It is showing NA because there isn’t enough values to make a median or mean.</p>
+</section>
+<section id="inline-coding" class="level2">
+<h2 class="anchored" data-anchor-id="inline-coding">5.3.3 Inline Coding</h2>
+<p>Inline coding is used when you want to make a statement about your data set using coding inside of the sentence. I know this is confusing , allow me to demonstrate.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#First we will write the in line coding for the dates of the retweets</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>retweet_from<span class="ot">&lt;-</span>retweet_summary<span class="sc">$</span>min_date <span class="sc">%&gt;%</span> <span class="co">#assign to variable so easier to use in sentence </span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">format</span>(<span class="st">"%d %B, %Y"</span>) <span class="co">#Using format to give us the date organized by date,month,year</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>retweet_to<span class="ot">&lt;-</span>retweet_summary<span class="sc">$</span>max_date <span class="sc">%&gt;%</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format</span>(<span class="st">"%d %B, %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that the code is in , lets put it in a sentence :</p>
+<p>There were 28626 re-tweets between 10 October, 2021 and 12 October, 2021.</p>
+<p>To see the output of this you can use the control shift k (on mac) to knit the document.</p>
+</section>
+<section id="counting" class="level2">
+<h2 class="anchored" data-anchor-id="counting">5.4 Counting</h2>
+<p>Counting is a function that can be used to count categorical data , this is efficient because it helps you know the number of non-numerical items.</p>
+<p>For example, if I wanted to know the amount of android users and Iphone users in the data , I can use this code below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sum is used to give me a total </span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(stringr<span class="sc">::</span><span class="fu">str_count</span>(tweets<span class="sc">$</span>source, <span class="at">pattern =</span> <span class="st">"Twitter for iPhone"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13634</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(stringr<span class="sc">::</span><span class="fu">str_count</span>(tweets<span class="sc">$</span>source, <span class="at">pattern =</span> <span class="st">"Twitter for Android"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5878</code></pre>
+</div>
+</div>
+<p>I can also produce a simpler example that shows the screen name of individuals with the number of re-tweets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>retweets_per_user <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(screen_name,retweet_count, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(retweets_per_user)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  screen_name     retweet_count     n
+  &lt;chr&gt;                   &lt;int&gt; &lt;int&gt;
+1 interest_outfit             0    34
+2 NRArchway                   0    29
+3 dr_stack                    1    27
+4 IAmRocWitChevy1             1    22
+5 KatieZakrzewsk1             0    20
+6 Heyyitsju5tin               0    19</code></pre>
+</div>
+</div>
+</section>
+<section id="inline-coding-part-2" class="level1">
+<h1>Inline coding part 2</h1>
+<p>In this part of inline coding we are going to use nrow, pull and slice.</p>
+<p><strong>nrow:</strong> is used to count number of rows in a data set <strong>slice:</strong> is used for a specific row of data <strong>pull</strong> is used to select a specific variable</p>
+<p>Let me show you how to use this !</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>tweeters <span class="ot">&lt;-</span> <span class="fu">nrow</span>(retweets_per_user)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>best_tweeter <span class="ot">&lt;-</span> <span class="fu">slice</span>(retweets_per_user, <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(screen_name)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>best_tweeter_n <span class="ot">&lt;-</span> <span class="fu">slice</span>(retweets_per_user, <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There were 26426 unique accounts tweeting about #NationalComingOutDay. interest_outfit was the most prolific tweeter, with 34 tweets.</p>
+<section id="grouping" class="level2">
+<h2 class="anchored" data-anchor-id="grouping">Grouping</h2>
+<p>The grouping function is used to group data by a variable from the data set For example, in this example we view the verified users and the number of retweets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>tweets_grouped <span class="ot">&lt;-</span> tweets <span class="sc">%&gt;%</span> <span class="co">#assign to variable</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(verified)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>verified <span class="ot">&lt;-</span> tweets_grouped <span class="sc">%&gt;%</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_retweets =</span> <span class="fu">mean</span>(retweet_count)) <span class="sc">%&gt;%</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>verified</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  verified count mean_retweets
+  &lt;lgl&gt;    &lt;int&gt;         &lt;dbl&gt;
+1 FALSE    26676          1.83
+2 TRUE      1950         21.5 </code></pre>
+</div>
+</div>
+</section>
+<section id="data-nyc-exercise" class="level2">
+<h2 class="anchored" data-anchor-id="data-nyc-exercise">Data Nyc Exercise</h2>
+<p>This Data NYC exercise is to show a deeper understanding of the chapter using data outside of the textbook. This data will be taken from <a href="https://opendata.cityofnewyork.us">Data NYC Website</a>.</p>
+<p>Professor instructed me to obtain, import, summarize, and plot data.</p>
+<p>NYC School Inspection Data</p>
+<p><a href="https://data.cityofnewyork.us/Health/DOHMH-School-Cafeteria-inspections-2020-Present-/5ery-qagt/explore" class="uri">https://data.cityofnewyork.us/Health/DOHMH-School-Cafeteria-inspections-2020-Present-/5ery-qagt/explore</a></p>
+</section>
+<section id="import-data-nyc" class="level2">
+<h2 class="anchored" data-anchor-id="import-data-nyc">Import Data NYC</h2>
+<p>Import the inspection data usin rio DOHMH_School_Cafeteria_inspections_<em>2020</em>-<em>Present</em>.csv</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>inspection_nyc<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"/Users/Alexus/Downloads/DOHMH_School_Cafeteria_inspections__2020_-_Present_.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="summarise-inspection-data" class="level2">
+<h2 class="anchored" data-anchor-id="summarise-inspection-data">Summarise inspection data</h2>
+<p>Next, I am going to summarize the data but first I want to view what is included in the data, to do this I am going to use the glimpse() function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(inspection_nyc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,093
+Columns: 25
+$ Record.ID            &lt;chr&gt; "40542839", "40736086", "40542116", "40542900", "…
+$ SchoolName           &lt;chr&gt; "P.S. 127 MCKINLEY PARK, RALPH A. FABRIZIO SCHOOL…
+$ Number               &lt;chr&gt; "7805", "141315", "684", "1300", "34", "5400", "2…
+$ Street               &lt;chr&gt; "7 AVENUE", "45 STREET", "LINDEN BOULEVARD", "BOY…
+$ City                 &lt;chr&gt; "Brooklyn", "BROOKLYN", "Brooklyn", "Bronx", "New…
+$ State                &lt;chr&gt; "NY", "NY", "NY", "NY", "NY", "NY", "NY", "NY", "…
+$ Borough              &lt;chr&gt; "Brooklyn", "Brooklyn", "Brooklyn", "Bronx", "Man…
+$ ZipCode              &lt;int&gt; 11228, NA, 11203, 10472, 10026, 11203, 11693, 112…
+$ LastInspection       &lt;chr&gt; "2/2/23", "2/15/23", "1/23/23", "3/9/23", "1/31/2…
+$ Permittee            &lt;chr&gt; "NEW YORK CITY DEPARTMENT OF EDUCATION", "CONGREG…
+$ InspectionDate       &lt;chr&gt; "7/28/22", "3/1/22", "11/17/22", "3/9/23", "8/1/2…
+$ PTET                 &lt;int&gt; 2530, 2533, 2530, 2530, 2530, 2530, 2530, 2529, 2…
+$ Site.Type            &lt;chr&gt; "FSE (Public School Cafeteria)", "FSE (Private Sc…
+$ Level                &lt;chr&gt; "", "G", "C", "C", "C", "C", "G", "", "", "C", ""…
+$ Code                 &lt;chr&gt; "", "10A", "04A", "04L", "04M", "04L", "10F", "",…
+$ ViolationDescription &lt;chr&gt; "", "Toilet facility not maintained and provided …
+$ LATITUDE             &lt;dbl&gt; 40.62413, 0.00000, 40.65363, 40.83159, 40.80246, …
+$ LONGITUDE            &lt;dbl&gt; -74.01883, 0.00000, -73.93311, -73.87891, -73.946…
+$ COMMUNITYBOARD       &lt;int&gt; 310, NA, 317, 209, 110, 317, 414, 303, 414, 412, …
+$ COUNCILDISTRICT      &lt;int&gt; 43, NA, 41, 18, 9, 45, 31, 36, 31, 27, 13, 27, 38…
+$ CENSUSTRACT          &lt;int&gt; 20600, NA, 87000, 5600, 19000, 94600, 94202, 2830…
+$ BIN                  &lt;int&gt; 3150481, NA, 3102005, 2027459, 1051434, 3104513, …
+$ BBL                  &lt;dbl&gt; 3059730001, 3, 3046730001, 2038640001, 1016010001…
+$ NTA                  &lt;chr&gt; "BK30", "", "BK91", "BX08", "MN11", "BK96", "QN12…
+$ BOROCODE             &lt;int&gt; 3, 3, 3, 2, 1, 3, 4, 3, 4, 4, 2, 4, 3, 3, 3, 5, 4…</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="directions-for-data-nyc" class="level1">
+<h1>Directions for Data NYC</h1>
+<p>This blog post is pretty lengthy so I am going to make this exercise pretty simple. For this data set I will be making a statement about the time frame of the inspections using inline coding; Then , I will make a graph counting the number of inspections per city.</p>
+<p><strong>Dates Inspection </strong></p>
+<p>I will find out the dates of the inspection using format and piping.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>Data_inspectionsummary<span class="ot">&lt;-</span> inspection_nyc <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min_inspectiondate =</span> <span class="fu">min</span>(InspectionDate),</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_inspectiondate =</span> <span class="fu">max</span>(InspectionDate))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>Data_inspectionsummary<span class="sc">$</span>min_inspectiondate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1/10/22"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>Data_inspectionsummary<span class="sc">$</span>max_inspectiondate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "9/9/22"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>inspection_from<span class="ot">&lt;-</span>Data_inspectionsummary<span class="sc">$</span>max_inspectiondate </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>inspection_to<span class="ot">&lt;-</span>Data_inspectionsummary<span class="sc">$</span>max_inspectiondate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that the code is in , lets put it in a sentence :</p>
+<p>There inspections took place from between 9/9/22 and 9/9/22.</p>
+</section>
+<section id="coubt-of-inspection-by-city" class="level1">
+<h1>Coubt of inspection by city</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>inspection_per_city <span class="ot">&lt;-</span> inspection_nyc <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Borough, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(inspection_per_city)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Borough    n
+1      Brooklyn 4699
+2        Queens 2250
+3     Manhattan 1886
+4         Bronx 1809
+5 Staten Island  449</code></pre>
+</div>
+</div>
+</section>
+<section id="pie-chart-of-data" class="level1">
+<h1>Pie Chart of Data</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>slices <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4699</span>, <span class="dv">2250</span>,<span class="dv">1886</span>, <span class="dv">16</span>, <span class="dv">8</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>lbls <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Brooklyn"</span>, <span class="st">"Queens"</span>, <span class="st">"Manhattan"</span>, <span class="st">"Bronx"</span>, <span class="st">"Staten Island"</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(slices, <span class="at">labels =</span> lbls, <span class="at">main=</span><span class="st">"Pie Chart of Inspections by City"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="interpretation-of-graph" class="level1">
+<h1>Interpretation of graph</h1>
+<p>As you can see in this pie chart and from the data frame that I created above , Brooklyn had the most inspections.</p>
+<p>Okay, that is all for this post!</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
