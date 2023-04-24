@@ -1,0 +1,407 @@
+---
+title: "Midterm 1"
+author: "Alexus Lawrence"
+date: "2023-04-13"
+categories: [news, code, analysis]
+image: "image.jpg"
+---
+
+
+### Midterm 1 
+
+Welcome to the first part of my midterm. In this post I will be demonstrating my understanding of multiple tasks that we have learned so far.
+
+**Directions:** 
+Write a blog post where you demonstrate your ability to use these basic programming concepts in R.
+
+**R objects:** show that you understand and can create/use objects of various types, including at least: character/string, numeric, integer, logical, data.frame, and list. Show that you can index objects appropriately (e.g., locate elements of an object, change elements of an object etc.)
+
+**Logical operations:** show that you understand and can use logical operators in R (e.g., == | > < >= <=)
+
+**Loops:** Show that you understand the components of a for loop, and that you can use a for loop.
+
+**Functions:** Show that you understand the syntax for declaring your own function, and that you can declare and run your own custom function to accomplish some task (you choose what the function does).
+
+
+
+## R-objects 
+
+R- objects are words that " identifies and store the values of some data for later use"
+Objects can contain numbers, words , full stops and underscores . Sometimes objects are referred to as variables. 
+
+**Character/string**
+
+A character is defined as a data type representing strings of text 
+
+I will give you an example of strings and also non-examples
+
+```{r,error=TRUE}
+# Strings are encased by quotes , this can look like:
+
+"1"
+"A,B,C"
+
+# In comparison , when a numbers or texts are not encased by quotes they are not consider strings
+
+1 # This would be simply interpreted as a numeric value 
+A # This will be considered a character because it is a text but not a string 
+
+
+```
+
+
+**Type of ()**
+
+The type of function is a function used when trying to determine the data type being used. We can see this using the same strings, characters and double that I used above. 
+
+```{r,error=TRUE}
+typeof(1)
+typeof("1")
+typeof("A,B,C")
+typeof (A)
+
+```
+Notice that when using the typeof() function above, it outputted the data types. However, you may be puzzled by the error that we see for A. This error states **"Error in typeof(A) : object 'A' not found"** , which basically means that the letter A by itself is considered an object, therefore you would need to assign something to it. 
+
+Now lets discuss the other results,
+
+For the first result , 1 is considered a **double** , this is because r recognizes any number with a decimal as a double for example 1.0 is the same as 1. Therefore, 1 is a double. I will get into numeric values : doubles and integers in the next section. 
+
+For A,B,C it is a character string because the letters are encased by quotes and the number 1 without quotation is considered a character because it is not surrounded by quotes. 
+
+
+# Numeric 
+
+Numeric is defined as a data type that represents integers and doubles. 
+
+**is.numeric() with integers, doubles, strings**
+
+```{r}
+#Numeric values can be both doubles and integers, using the is.numeric() function will help with the confusion surround numeric vs non-numeric values 
+
+is.numeric(1.0)
+is.numeric(1)
+is.numeric(3)
+is.numeric(3.0)
+is.numeric("1")
+is.numeric("3")
+```
+After using the is.numeric function it returns true or false values regarding if something is numeric or not. **Remember that if a number is encased by quotes, it is a character, hence the false output of line 82-83**
+
+R is a great program and is lenient to its coders , there is a function called **as.numeric()** in which you can false R to view these numbers as numeric! Let's see it in live action. 
+
+**as.numeric() with integers,doubles and strings**
+
+```{r}
+as.numeric(1.0)
+as.numeric(1)
+as.numeric(3)
+as.numeric(3.0)
+as.numeric("1")
+as.numeric("3")
+```
+As you can see above R recognized these values as numeric.
+
+But.... There is also another way! 
+
+**is.numeric() with L for numbers **
+
+If you would like a number that is not encased by quotes to be viewed as numeric you can also place an L after the number. **Use the is.numeric() function**
+
+```{r}
+is.numeric(2L)
+is.numeric(3L)
+```
+
+These numbers are considered numeric and not characters because the **L** tells R that the number is numeric. 
+
+
+But.... What about characters like A, B, C or D?? Can those be numeric ?? Let's try it out. 
+
+**Testing out as.numeric() with characters**
+
+```{r,error=TRUE}
+as.numeric(a)
+as.numeric(b)
+```
+As you can see above , even when using the as.numeric function characters will not be considered numeric because they're not!
+
+Well... how about imaginary numbers , are they considered numeric? If not, can be changed into numeric values using the as.numeric function? Let's try it out!
+
+**is.numeric() with imaginary numbers**
+
+```{r}
+is.numeric(3i)
+is.numeric(5i)
+is.numeric(6i)
+```
+
+These false values outputted above demonstrate that imaginary numbers are not considered numeric values. Let's see what happens when we try to convert them into numeric values using the **as.numeric()** function.
+
+```{r}
+as.numeric(3i)
+as.numeric(5i)
+as.numeric(6i)
+as.numeric(6+6i)
+```
+
+Wow, look at that! The warning states **"imaginary parts discarded in coercion**, this means that R does not see imaginary numbers as numeric values but also discarded their imaginary parts to output the numeric value of "0". Additionally, when inputting the 6+6i inside of the as.numeric() function, it only outputted the 6 and discarded the imaginary 6i. 
+
+
+# Logical 
+
+Logical is defined as a data type that represents true or false values. Some programs will also refer to logical as **Boolean**, for the sake of this midterm we will just use logical. 
+
+Similar to as.numeric , the logical data type has **as.logical** function that can help determine values as logical. **You can also determine logical yourself by using T to  demonstrate true values and F to demonstrate false values** 
+
+**It is important that with the as.logical data type , zeroes are referred to as false, while non zeroes are referred to as true**
+
+For example: 
+(I will start off simple then use more complex examples)
+
+**Zeroes vs non-zeroes with as.logical**
+
+```{r}
+as.logical(0) #zereos are consider false
+as.logical(1) #non-zero , true value
+as.logical(2) #non-zero, true value 
+```
+
+**List of True and False values**
+
+We can make a list of logical true values and false values using the list() function. 
+
+
+**True values** 
+
+```{r}
+true_logical<-list(           #Assign it to a variable 
+  full = TRUE,                #Full = is used to make the full list true 
+  abbreviated = T,            #True or false logical values are abbreviated to T&F respectfully 
+  integer = as.logical(5),     #Using the as.logical for the number 5 and it is a non-zero, it will be a true value
+  equation = "A" == "A")     #Will be a true value because A does equal A and quotations needed for the character (A) 
+
+
+
+str(true_logical)      #Return the string true_logical
+
+```
+
+**False values**
+
+```{r}
+false_logical<-list(           #Assign it to a variable 
+  full = FALSE,                #Full = is used to make the full list false 
+  abbreviated = F,            #True or false logical values are abbreviated to T&F respectfully 
+  integer = as.logical(0),     #Using the as.logical for the number zero, it will be a false value
+  equation = "C" == "D")     #Will be a false value because C doesn't equal D , quotations needed for character/strings
+
+
+str(false_logical)       #return false_logical
+```
+
+**Logical with operator**
+You can use logical function with operators as well , for example:
+
+```{r}
+as.logical(10 > 11)
+as.logical(9 > 10)
+as.logical(12 < 14)
+```
+
+# Data.frame 
+
+Data.frame is defined as "data type for storing tabular data". 
+**Data tabular data:** "Data in a rectangular table format, where each row has an entry for each column."
+
+```{r}
+data.frame(
+Item = 1:10,    
+Description = c("eggs", "cheese", "milk", "tropicana juice", "butter", "bagels", "bread", "rice", "beans", "gallon of water"), 
+Price = c ("2.99", "3.00", "5.00", "4.00", "1.99", "6.00", "8.99", "10.00", "3.50", "2.50"))
+
+#when using data.frame the name of the column goes on the left side of the equal sign and then the row info on the right side 
+```
+
+# List
+
+List is defined as "A container data type that allows items with different data types to be grouped together."
+
+We can use some of the different data types that I included earlier in the blog.
+
+```{r}
+list(
+celebrityname = c("Chloe Bailey", "Beyonce", "Future", "Jay Z"), #using the c to make the string 
+integer = 1:30,  #use the integer type
+str("I love celebrities"), #use str to make a string
+list_withtandf= list("A==A","is", TRUE)
+)
+```
+
+# Vector 
+Vector is defined as "A type of data structure that collects values with the same data type, like T/F values, numbers, or strings."
+
+You can use the c() to make different list including different data types from the definition
+
+```{r}
+drinks <- c("water", "tropicana juice", "milk", "sorrel", "orange juice", "smoothie")
+integers <- 1:6
+
+drinks     #call drinks
+integers    #call integers
+```
+
+**Use brackets to select from list**
+
+We can use the brackets [] to select certain things from the list 
+
+```{r}
+drinks[4]  #selecting the 4th item from the drinks list 
+integers[5]
+```
+
+**Built-in vectors**
+
+There are also built in vectors such as LETTERS and we can select from it as well
+
+```{r}
+LETTERS
+LETTERS[16]
+
+```
+
+## Logical Operations 
+
+Logical operator can include arithmetic operator , relational operator and logical operators. I will show my understanding of all these operators below while educating you on how to use them. Let's start !
+
+**Arithmetic Operator**
+
+A type of data structure that collects values with the same data type, like T/F values, numbers, or strings.
+
+```{r}
+Arithmetic_operators <- c("*", "+","-","/","%%","^")    #Assigning arithmetic operators to a variable so that you can visually see the list of them
+Arithmetic_operators
+
+1*4 #* is a arithmetic operator used for multiplication
+7+8 # + is a arithmetic operator used for addition 
+9-0 # - is an arithmetic operator used for subtraction 
+16/4 # / is an arithmetic operator used for division 
+25%%6 # %% is used to find the remainder 
+9^2   # ^ is used to represent an exponent 
+
+#Now, let's run this code ! 
+
+```
+
+**Relational operator**
+
+Relational operators are operators that are used to compare or show the relationships between objects
+```{r}
+relational_operator <- c("==","!=",">",">=","<","<=","%in%") #assigning it to a variable so you can have list 
+relational_operator
+"C"=="C" #== is a operator used as "equal to"
+"B!"="Z" # != is an operator that is used to represent "not equal to" 
+8>4 # > is an operator that is used to represent "greater than"
+16>=15 # >= is an operator that is used to represent "greater than or equal to"
+15<16 # < is an operator used to represent "less than"
+14<=3 # <= is an operator used to represent "less than or equal to "
+"sorrel"%in%drinks #%in% is an operator to represent "match", which is basically to "match" objects to vectors or list 
+```
+
+
+**Logical operators**
+Logical operators are used to compare objects in vectors 
+These can only be used for numeric, logical or complex types
+
+```{r}
+
+logical_operators <-c("&","|","&&","||","!")
+logical_operators
+
+c(9,8,7) & c(9,10,11) == c(9,8,2) #& and compares each element
+c(T,F,F,F,F,T)|c(F,T,T,T,T,F) == c(F,F,T,T,F,T) # "|" compares each element 
+c(9+8i,6+7i,10+2i) && c(9+6i,7+6i,2+10i) == F  #&& compares the first element , this example is using complex types
+c(T,T,F) || c(T,F,F) == T  # compares the first element 
+!F==T    #! is used to represent "not", what it is not 
+
+
+```
+The warning is apart of the new r package 
+
+
+## For Loop 
+
+For loops is a fluent pathway that can help us repeat statements that we want generated until whatever condition we set is completed. I can show you a few examples below !
+
+```{r}
+doubles<- numeric() # assign the variable to numeric function so that r knows that i is numeric 
+for (i in 1:20) # i will be representative of the variable we will use for the loop, I am using the for loop to count from 1 to 20
+  { doubles<-c(doubles, i*2)   #inside of the brackets I will reassign the doubles data frame that I just created and make i double for each number 
+  
+}
+doubles  #calling the data frame to see the results 
+```
+
+
+**break**
+break is to help us make a stop in the loop based on the certain condition we set. We will use the same doubles set to show this 
+```{r}
+doubles<-numeric()
+for (i in 1:20)
+{ doubles<-c(doubles, i*2) 
+if(i==6)
+{break}
+}
+doubles
+```
+
+As you can see above , once I set the condition of "if i=6 then break"
+The loop would not go on any more 
+
+
+##Function 
+
+Creating your own function is very fun , you can tell r what you want the code to do . I will create two functions and then we are all done !
+
+Let's go !!
+
+**Function 1**
+
+For this first function, I wanted to create a function in which it multiplies the value of a multiplied by 2 , then I tried it using the function with different values of a. 
+
+
+```{r}
+a<-numeric() # make r know that a is numeric 
+mynew_function<-function(a) # assign my new function to a variable 
+{return(a*2)
+}
+
+#try my new function with different a values 
+mynew_function(2) 
+mynew_function(4)
+mynew_function(5)
+```
+
+**Function2**
+
+I can make another function for numbers indivisible or divisible by 4. 
+
+```{r}
+divisible_4<- function(x,y,r) {  #name function using a name that will inform readers about what the function is for 
+  x<-4
+  r<-y%%4 #using the %% logical tool you learned about earlier to give me remainder
+  
+  if (r>0) #if my remainder is more than 0 it would make the number indivisible by 4 
+    print("indivisible by 4")
+  if (r==0)
+    #if my number is == to 0 , it would make it divisible  by 4 
+    print("divisible by 4")
+}
+
+divisible_4(y=16)
+divisible_4(y=17)
+divisible_4(y=18)
+```
+
+
+Phewww that was a lot , that is all for my midterm part 1 ! 
