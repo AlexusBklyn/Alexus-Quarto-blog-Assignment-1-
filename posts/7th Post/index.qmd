@@ -1,0 +1,362 @@
+---
+title: "Week 7 GG Plot 2  "
+author: "Alexus Lawrence"
+date: "2023-04-13"
+categories: [news, code, analysis]
+image: "image.jpg"
+editor: 
+  markdown:
+---
+
+**GG Plot Week 7**
+
+Hello everyone , welcome to my Week 7 blog post. In this blog post I am going to discuss GG plots and show different examples. The special thing about this week's post is that I will not be offered the data to reproduce the ggplot.
+
+## Directions:
+
+**be able to make a scatter plot between an x an y variable** **be able to make a line graph with points** **be able to make a bar graph** **be able to make a bar graph with error bars** **attempt to reproduce as many figures from the examples as possible.**
+
+# Load the libraries
+
+```{r}
+install.packages('stats') #for the stats function 
+install.packages('ggpubr') #to use the stat_cor function in r 
+```
+
+```{r}
+library(knitr)
+library(ggplot2)
+library(tibble)
+library(tidyr)
+library(readr)
+library(stats)
+library(ggpubr)
+```
+
+# Scatter Plot
+
+The first set of directions asks me to recreate a scatter plot (see below) and include the x and y values. Remember the data is not given , so I will need to make my own data based on what I see below , lets start!
+
+```{r}
+knitr::include_graphics("/Users/Alexus/Desktop/Scatter Plot graph .png")
+```
+
+# Autism Spectrum quotient with Social N-400 (without trend line)
+
+**Create data frame**
+
+First, I will need to make a data frame being that one isn't provided for us. I will create this data frame by :
+
+1.  Setting the numbers of the x,y variables.
+2.  Making the data frame using the variables we just set 3.Creating a scatter plot with those set variables and view it before moving on to the other steps such as the title.
+
+Being that I don't have a data frame given I will need a function that can generate random numbers for me but in a range that I can set. This will help my graphs resemble the graphs above.
+
+After doing some google searching I found out about a function called **runif()**, if you want to use the site I used to research this click here --\> [Cookbook for r](http://www.cookbook-r.com/Numbers/Generating_random_numbers/)
+
+**First Plot**
+
+```{r}
+# To use the run if function you must do it in a specific format which is: (the number of #'s you want, min#,max#)
+
+#The graph has too many points to count , so I will set the count to 30, the minimum is going to be -2.5 and the maximum will be 3. 
+
+
+x<-runif(30,-2.5,3) 
+y<-runif(30,-10,20)
+
+#Create the data frame (assign it to the df variable)
+df<-data.frame(x,y)
+
+
+#Creating the scatter plot 
+
+#Since it is different scatter plots that I am creating I will assign it to a name 
+
+firstscatter<-ggplot(df, aes(x=x,y=y)) +
+  geom_point() 
+
+
+
+
+
+
+
+
+
+firstscatter
+
+
+```
+
+This graph looks really messy and the axis doesn't look the same as the one in the photo , so let's try editing it .
+
+```{r}
+#Maybe if we change the points to 25 or 20 so that there are less points and closer
+# In the example the numbers on the x axis, every 2 points is = 2.5 , I need to find a function that hides some of the numbers on the x axis but still maintain the same  value 
+x<-runif(25,-2.5,5) 
+y<-runif(25,-10,20)
+
+#round will make each x value correlate with a y value and digits = inside the function will help you hide some of the digits. Assign it to a variable , I'll use 'c' for correlate 
+c<- round(cor(x,y),digits = 2)
+
+#Create the data frame (assign it to the df variable)
+df<-data.frame(x,y)
+
+
+#Creating the scatter plot 
+
+#Since it is different scatter plots that I am creating I will assign it to a name 
+
+firstscatter<-ggplot(df, aes(x=x,y=y)) +
+  geom_point() 
+
+firstscatter
+```
+
+After running this my x-axis and y axis still doesn't match , I will try to edit again using different numbers in the run if
+
+```{r}
+#Maybe if we change the points to 25 or 20 so that there are less points and closer
+
+#I should probably change it from a 'step ahead' to make the data points more close together
+
+x<-runif(25,-2.5,3) 
+y<-runif(25,-10,15)
+
+#round will make each x value correlate with a y value and digits = inside the function will help you hide some of the digits. Assign it to a variable , I'll use 'c' for correlate 
+c<- round(cor(x,y),digits = 2)
+
+#Create the data frame (assign it to the df variable)
+df<-data.frame(x,y)
+
+
+#Creating the scatter plot 
+
+#Since it is different scatter plots that I am creating I will assign it to a name 
+
+firstscatter<-ggplot(df, aes(x=x,y=y)) +
+  geom_point()
+
+
+
+firstscatter
+```
+
+The graph still doesn't look the same because of the axis , I want to make it the same exact numbers , when I used digits it helped me hide some of the digits and 'count by 2' but it isn't the exact digit's I want. I'm going to take a break and use the 'basic examples' for gg plot that was provided by professor and then edit my code as a full.
+
+```{r}
+
+#Keep the numbers from the last edit 
+x<-runif(25,-2.5,3) 
+y<-runif(25,-10,15)
+
+#round will make each x value correlate with a y value and digits = inside the function will help you hide some of the digits. Assign it to a variable , I'll use 'c' for correlate 
+c<- round(cor(x,y),digits = 2)
+
+#Create the data frame (assign it to the df variable)
+df<-data.frame(x,y)
+
+
+#Creating the scatter plot 
+
+#Since it is different scatter plots that I am creating I will assign it to a name 
+
+firstscatter<- ggplot(df, aes(x=x,y=y)) +
+  geom_point() +
+
+    #After researching using the basic examples and link I provided for the cookbook , I learned about scale_x_continuous which lets you go by the value and hide the digits that I need hidden (specifically for x axis )
+
+
+scale_x_continuous(breaks=c(-2.5, 0, 2.5)) +
+
+#Now label the x-axis using the xlab function 
+  
+xlab("Social N 400") +
+
+#The x-axis is not allowing me to do 7 lines like the original , so I am just going to focus on reproducing the other parts of the graph 
+  
+# Now label the y axis   
+
+# when I use the 'ylab("Autism Spectrum Quotient (score)")' it just labels the points are still not close together , I am guessing they may have actually did the quotient which is division , so ill edit this 
+
+
+  
+ylab("Autism-Spectrum \n Quotient (score)") +
+
+# Next, I want to add the numbers -10,0,10 on the y-axis 
+
+# I tried scale_y_continuous, with the breaks as i did with x but it is not producing an exact graph, I am going to move on to adding a line and the r value  
+  
+#Geom smooth is a function in r that allows you to show a regression line 
+  
+geom_smooth(method = "lm", se=FALSE) +
+
+#it gives me a background shadow, I want to remove that , I'm going to try to set se to false 
+#it worked !, now let's add the r value , I'll research how to add the r label to a scatter plot
+  
+#I used the site below to figure out how to add the the correlation coefficient 
+  
+ # for the label x I'm going to use 2.5 and label.y I'm going to use 10 ; This is because in the original graph , each space between the numbers represent the above values for the axes respectively 
+stat_cor(method = "pearson", label.x = 2.5, label.y = 10)
+  
+# I received an error about the function stat_cor , I need to download the stats function before I proceed. 
+
+#Fixed ! Now let's run it 
+
+firstscatter
+
+#Finally! , I want to make the points a little bigger to make it look as close to the graph as possible , I will do this by using the ggpoint function and use size 2 or 3 , whichever looks better. 
+```
+
+This is the site I used for the correlation coefficient: [Coefficient link](https://rpkgs.datanovia.com/ggpubr/reference/stat_cor.html)
+
+**Second scatter Plot**
+
+I am going to create the second and third scatter plot with less notes added because I was very detailed with the previous scatter plot; I understand what I should do for the second and third plot.
+
+Let's get to it !
+
+```{r}
+x<-runif(25,-2.5,3) 
+y<-runif(25,-10,15)
+
+c<- round(cor(x,y),digits = 2)
+df<-data.frame(x,y)
+
+secondscatter<- ggplot(df, aes(x=x,y=y)) +
+  geom_point() +
+
+scale_x_continuous(breaks=c(-2.5, 0, 2.5)) +
+
+scale_y_continuous(breaks=c(-8, -4, 0, 4)) +
+  
+  
+xlab("Social N 400") +
+
+ylab("\'Reading the Mind in the \n Eyes\' Test (score)") +
+ 
+geom_smooth(method = "lm", se=FALSE) +
+
+stat_cor(method = "pearson", label.x = 2.5, label.y = 10)
+  
+secondscatter
+
+```
+
+Great! Now let's get to the third scatter plot.
+
+**Third Scatter Plot**
+
+I am creating the third scatter plot
+
+```{r}
+x<-runif(25,-2.5,3) 
+y<-runif(25,-10,15)
+
+c<- round(cor(x,y),digits = 2)
+df<-data.frame(x,y)
+
+thirdscatter<- ggplot(df, aes(x=x,y=y)) +
+  geom_point() +
+
+scale_x_continuous(breaks=c(-2.5, 0, 2.5)) +
+
+
+  #The scale y continuous labels that are set are not matching , I will have to do my best reproducible graph but unfortunately it won't be an exact match 
+  
+xlab("Social N 400") +
+
+ylab("Empathy Quotient Test \n (score)") +
+ 
+geom_smooth(method = "lm", se=FALSE) +
+
+stat_cor(method = "pearson", label.x = 2.5, label.y = 10)
+  
+thirdscatter
+```
+
+## Line graph with points
+
+**Image of Line Graph Reproduce**
+
+In this section I will reproduce a line graph with points. Let's get started! 
+
+Below is a screenshot of the graph 
+
+```{r}
+knitr::include_graphics("/Users/Alexus/Desktop/Line Graph with points assign.png")
+```
+
+Now that we are done with that, let's make the graph!
+
+This graph looks pretty difficult, I am going to try my best using the
+[Professor Crump's website](https://crumplab.com/psyc3470/modules/7%20More%20ggplot2/ggplot_examples.html)
+
+
+```{r}
+# First, I have to create the labels of the x axis, unlike the scatter plot the x axis labels do not include numeric values such as -2.5,0,2.5 . Therefore, we would have to use c() to group these labels 
+
+
+#Assign it to a variable so that it is easier when graphing 
+
+lags_values <- rep(c("< -100","-100 to -51","-50 to -11","-10 to -1","0","1 to 10","11 to 50", "51 to 100",">100"))
+
+lags_labels <- rep(c("Raw Data", "Semantics Removed"))
+
+bias_score<- c(-0.5,0.0,0.5,1.0,1.5,2.0,2.5)
+
+#Now that I have the variables that I will need to make the graph , it is time to make a data frame 
+
+df<- data.frame(bias_score,lags_labels,lags_values)
+
+#The data frame is now intact, let's try to call each column from this data frame so that I can include the levels 
+
+df$lag_values<- factor(df$lag_values,
+                       levels = c("< -100","-100 to -51","-50 to -11","-10 to -1","0","1 to 10","11 to 50", "51 to 100",">100"))
+
+df$lags_labels<- factor(df$lags_labels,
+                        levels = c("Raw Data", "Semantics Removed"))
+  
+#Let's try to plot this now!
+
+linegraph<-ggplot(df, aes(x=lag_values, y=bias_score,
+               group=logs_values,
+               shape=logs_values,
+               line=logs_values,
+               color=logs_values))+
+
+#Now that I got the majority things I need, I want to erase the background and replace it with the lines and erase the grey , I'm going to do some research and be right back. 
+  
+#There is a function called scale_color_brewer which is a function that changes the colors of the lines and points of the graph. In the original graph it includes both grey and black which are colors listed under "greys" in the functions  
+
+scale_color_brewer(palette ="Greys", direction =-1)+
+geom_point()+
+geom_line()+
+xlab("Lag in days")
+ylab("Temporal-Bias Score")
+coord_cartesian(ylim =c(-0.5,2.5))+
+scale_y_continuous(breaks =seq(-0.5,2.5,.5))+
+theme_classic()+
+geom_hline(yintercept=0.0)+
+theme(axis.line.x.bottom = element_blank(),
+      axis.ticks.x.bottom = element_blank(),
+      legend.title = element_blank())
+
+               
+linegraph               
+               
+               
+               
+  
+  
+  
+  
+
+                        
+                        
+                       
+                       
+                       
+```
+
