@@ -1,0 +1,288 @@
+---
+title: "Eighth Blog Post "
+author: "Alexus Lawrence"
+date: "2023-03-29"
+categories: [news, code, analysis]
+image: "image.jpg"
+---
+
+## Hello welcome to my Eighth blog post !
+
+In today's post you will learn how to use functions such as **mutating joins, binding joins, set operations and conflicting variable data types**
+
+This will be easy as long as you tag along with me and complete the exercise as I demonstrate.
+
+Let's start !
+
+# Exercise
+
+For today's exercise we will be using "Grade Data" from the University of Glasgow.
+
+There are different exercises attached to this assignment and I will provide the instructions as we navigate this assignment together.
+
+Before we start lets load the package we need (tidyverse)
+
+# Load Package
+
+```{r}
+library(tidyverse)
+```
+
+Okay! We have that loaded , let's continue !
+
+Next we have to download the data and then load it.
+
+I downloaded the data now let's read it in.
+
+# Read in data (Exercise 1)
+
+**Directions for exercise 1:**
+
+1)Read in schedule A.Csv and save it to an object named schedule 2) Read in grade_1.csv and save it to an object named grades 1 3)Read in grade_data2.csv and save it to an object named grades 2
+
+Let's do it !
+
+```{r}
+schedule<- read.csv("/Users/Alexus/Downloads/scheduleA.csv")
+grades1<- read.csv("/Users/Alexus/Downloads/grade_data1.csv")
+grades2<- read.csv("/Users/Alexus/Downloads/grade_data2.csv")
+```
+
+We did it !!!!
+
+Now let's get on to the next task
+
+# Grade Data (Exercise 1)
+
+**Exercise 2 explanation of data**
+
+GUID is an id for all students of the U of G. With that ID but the id will be combined with the initial of your first name. For example, if my id was 987643 and my name is alexus , so my id would look like 987643a , this will cause confusion because grade1 contains numeric values while grade 2 has a letter.
+
+The chapter helped us out by handling the situation with the given code below (I will right notes so that you understand what is going on)
+
+**Change column of grades 1 data type to remove letters**
+
+```{r}
+grades1 <- grades1 %>%
+  mutate(id = str_replace_all(
+    id, # above you can see the mutate function which helps with changing the data that you want to change , the id column is inside the grades 1 data set, so we are selecting it 
+    pattern = "[a-z]", # the function pattern is searching for all the letters , here the a-z is used so it is going to search for all the letters of the alphabet within the id column 
+    replacement = "" # here we are using the replacement function so that we can replace the letters, there is blank space inside of the quotation marks because we want to replace it with nothing 
+  ))  
+```
+
+**Directions for exercise 2**
+
+Now that we have replaced the letters with nothing , the next exercise is to change the data type of id so that it matches grades 2 type which is numeric. So let's do it !
+
+I want to see what my data looks like first before I change it, I'm going to view it , ill be right back!
+
+hint: You can use the glimpse function for a quick view but I personally like to view my data fully so that I understand , do what works for you!
+
+OK now that I seen my data, I realize that the letters are removed, lets change the data type of grades 1 to numeric , this is easy , I taught you about mutate and the as.numeric function in previous post but I'll still explain
+
+let's go!
+
+```{r}
+grades1<- grades1%>% #We are changing or "mutating" from this data type so we have to select it , the pipe symbol is simply so that we can continue and grab the column ("and then" remember)
+  
+mutate(id=as.numeric(id)) # here we are mutating the column id , we use the as numeric function to change it from non-numeric to numeric 
+```
+
+Now that we did that , let's view the data, this time I am going to use the glimpse function.
+
+```{r}
+glimpse(grades1)
+```
+
+Looking good !! Next task , lets go!
+
+# Complete Records (Exercise 3)
+
+ **Direction for exercise 3:**
+
+For this exercise, we are assigned to join the grade data to schedule a , this is so that we can see the grade point and grade for each student. However, there is a twist , some of the students have missing grades , which will most likely be labeled "NA" to represent the missing data; we have to include those with missing grades as well, it's OK lets do it !
+
+1)Join grades 1 and schedule A, label it exam_all 2)Join grades 2 and save it in essay_all 3)Both exam_all and essay_all should have 4, variables and 100 observations
+
+ **Left Join**
+
+**Left Join** is a function in which we join tables from the left to match the right. In this case we are joining grades 1 (left) , grades 2(left) to match the schedule (right). When using left_join you must understand the format.
+
+It gets complicated but I'll explain in the comments , let's start.
+
+```{r}
+# for the left_join format it goes like this 
+#left_join(the left table, the right table (what you want to join), by= which is what you want them to be joined by, in this case it is the points)
+exam_all<- left_join(grades1, schedule, by="Points")
+essay_all<- left_join(grades2, schedule, by="Points")
+```
+
+Nice! 
+
+# Missing data (Exercise 4)
+
+In this section I am asked questions about the data set and I will answer below 
+
+**Questions for exercise 4 **
+
+1) How many exam grades are missing?
+2)How many essay grades are missing ?
+
+For me to answer these questions, I first need to get a summary of my data as instructed in the exercise. Let's do it !
+
+```{r}
+summary(exam_all)
+summary(essay_all)
+```
+**Answers for Exercise 4 question**
+
+The summaries of the objects gave me the number of NA'S as you can see above, so lets answer the questions 
+
+1)There are 17 missing exam grades 
+2)There are 23 missing essay grades 
+
+
+**Directions for exercise 4 pt 2 task**
+
+For the second task of exercise 4 , we are asked to create an object that joins together grades 1 and schedule , however , they would only like that we include those students who have a grade, we should do the same for grades 2 as well but save it to an object called essay_grades. 
+
+**Before this task we are asked to answer two questions**
+
+1)How many observations should exam_grades have?
+2)How many observations should essay_grades have?
+
+To answer this questions all I need to do is subtract the number of missing values (#number of 'NA') that each object contains from the number of initial observations (100)
+
+Let's do it 
+
+**Answers to exercise 4 pt 2 questions**
+
+**Exam grades** : 100-17= 83, therefore there should be 83 observations for exams after I complete the join task.
+**Essay grades** : 100-23=77 therefore there should be 77 observations for essays after I complete the join task.
+
+
+Now that we answered those questions lets get into the task.
+
+I have to create an object under exam_grades that joins grade 1 and schedule but only with students who have a grade and do the same for essay & store it under essay_grades. 
+
+If I want to exclude the students that don't have a grade , the best function to use is **inner_join** . **Inner Join** is a mutating join function in which it only returns rows that have a match in each of the tables. The missing values will be excluded because there are only matching values for the students with grades. Let's try it 
+
+hint: The inner join function is formatted the same as the left join function that I showed you in that section , feel free to review it.
+
+
+```{r}
+exam_grades<- inner_join(grades1, schedule, by="Points") #setting exam_grades as an object to the joined grades and schedule 
+
+essay_grades<- inner_join(grades2, schedule, by="Points") #setting essay_grades as an object to the joined grades and schedule 
+```
+
+Great! The number of observations matched the expected number of observations, that means that i did it correct, hooray!
+
+**Exercise 4 pt 3**
+
+**Directions for Exercise 4 pt 3:**
+For pt 3 of exercise 4, we are instructed to create data set titled 'completes' which joins the grades for the students who have a grade for the essay and exam. 
+
+We are advised that for the essay_grades and exam_grades they have variables Assessment,Points and Grades which are the same variables but in each object they contain different data. 
+
+We are asked to change the suffix to the names point_exam and point_essay respectively and then select for id, grade_exam and grade_essay. 
+
+
+Truthfully, I do not know how to do this , so I will read the parts of the chapter that I need and use Google as well, I'll be back ! 
+
+
+I'm back ! 
+
+Based on the reading and googling 
+
+It seems that we still need the inner_join function because it will join the variables that match in both the exam _grades and exam_grades objects. Within the inner_join function we will need to use a function called suffix which apparently is used to change the suffix of a value in the table. Lastly, to select for the desired values (id, grade_exam & grade_essay), we will use the function select which helps to select specific values. 
+
+Let's do it !
+
+```{r}
+completes<- inner_join(exam_grades,essay_grades, #Here I am making a data set called completes as instructed and then I used the inner join function to join the objects (exam&essay grades)
+ by = "id", #similar to the left_join function , I am asking the objects to be joined by id
+ suffix = c("exam", "essay"))%>% #here I use the function suffix to replace the suffix so that they join , followed by the pipe symbol (and then) which helps tell the function what they should do after , in this case it is to select 
+ select(id, Gradeexam, Gradeessay)
+                       #I used the select functions to select the specific values of id,grade_exam and grade_essay as instructed
+
+```
+
+**ERROR Warning:** I received an error about the columns Grade_exam and Grade_essay not existing. At first I was puzzled and didn't know what to do but I decided to take a view of the data and R is right , they don't exist, however, Gradeexam and Gradeessay does. This is because in the exercise directions it mistakenly uses the underscore between the words in the column labels but in the data it exists together , be careful. 
+
+
+**Exercise 4 pt 3 question**
+
+We are asked one question regarding the 'complete' data set that I just created. 
+
+How many students have a grade for both the exam and the essay ? 
+
+To answer this question you can simply look at the number of observation included in the completes data set or you can use a summary of the completes data set. Let's do both 
+
+
+**Answer for exercise 4 pt 3 answers**
+
+Based on the observation it says that there are 62 observations , therefore there are 62 students with both an exam and essay grade. Let's use the summary function to confirm. 
+
+```{r}
+summary(completes)
+```
+It is confirmed! The summary also mentions that the length is 62 (there are 62 students with both grades respectively )
+
+
+
+**Exercise 4 pt 4 **
+
+For exercise 4 pt 4 we are instructed to create a data set labeled 'no essay' that contains students that have a grade for the exam but not the essay and then vice versa but label the second no_exam. 
+
+This is pretty easy because in the reading there were only two types of filtering joins which was the semi_join and anti_join function , the **anti join function** is the only function out of the two that returns the rows that are not matching. You have to be careful because order matters, therefore you must be specific about the data that you want to anti join , you can do this for both left and right tables respectively, ill show you below. 
+
+
+```{r}
+no_essay<- anti_join(exam_grades,essay_grades, by="id")
+# I am assigning the data set to 'no_essay' as instructed and then I use exam grades as my left table and essay grades as my right table and then 'anti-join' them by the id because that is how we identify the student 
+
+```
+
+Now let's do the same for the exam 
+
+```{r}
+no_exam<- anti_join(essay_grades,exam_grades, by="id") #it is the same as above
+```
+
+Let's glimpse both data sets before we answer the questions related to them. 
+
+```{r}
+glimpse(no_essay)
+glimpse(no_exam)
+```
+Beautiful! 
+
+Now let's answer the questions 
+
+**Questions for exercise 4 pt 4**
+
+1) How many students have a grade for the exam but not the essay?
+2) How many students have a grade for the essay but not the exam?
+
+
+**Answers for exercise 4 pt 4**
+This is easy to answer using the observation and the summary , let's use both. 
+
+For the no_essay data set , there are 21 observations therefore 21 students completed the exam but no essay. For the no_exam data set there are 15 observations , therefore 15 students completed the essay but not the exam. 
+
+Let's confirm this with the summary function and then we will be done. 
+
+```{r}
+summary(no_essay)
+summary(no_exam)
+```
+
+Confirmed!
+
+
+That was a lot of work , but we got through it. 
+
+Chao!
+
