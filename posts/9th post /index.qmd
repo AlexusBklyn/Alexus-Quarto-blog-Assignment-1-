@@ -1,0 +1,312 @@
+---
+title: "Video game review report "
+author: "Alexus Lawrence"
+date: "2023-03-29"
+categories: [news, code, analysis]
+image: "image.jpg"
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(tidyverse)
+review_data <- rio::import("/Users/Alexus/Downloads/review_data.csv")
+```
+
+# Video game review report
+
+### Alexus Lawrence
+
+## Report overview
+
+This report summarises reviews submitted for Video Game products on Amazon from **1999** to **2018** made available by [Ni et al. (2019)](https://nijianmo.github.io/amazon/#subsets). In total there are **497577** reviews in the data set. 
+
+## Number of review by year
+
+The below histogram shows the number of video game reviews submitted to Amazon by year. From 1999 reviews largely increased year-on-year which is unsuprising given the growth of Amazon and access to the internet. The dataset shows the peak number of reviews was 2015 with a decline from 2016 to 2018. It is likely that this reflects the dataset being incomplete for recent years rather than the number of reviews declining in reality. 
+
+
+```{r, echo=FALSE}
+# I need to make a graph for the report of reviews by year. 
+#This will be easy because in my previous post , I used counts 
+
+reviews_per_year<- review_data %>% #Selecting from the data set review_data and save it to the object reviews_per_year
+  group_by(year) %>% #I will group by year because it will provide the number of reviews by years 
+ summarize(counts = n()) #We will use summarize and n for the number count , the parenthesis is blank so that the numbers can generate based on by data 
+
+#plot histogram 
+
+Histo_reviews<- ggplot(data = reviews_per_year, mapping = aes(x=year, y=counts))+
+geom_bar(stat= "identity",fill="white",color="black")+
+scale_x_continuous(breaks = 1999:2018)+
+  xlab("")+
+  ylab("")+
+  ggtitle("Number of reviews per year",
+          subtitle = "1999 to 2018") +
+
+  # I don't know how to list the 1998 to 2018 statement underneath the title, i'm going to look it up. 
+  #Ok, apparently it should be listed as a subtitle, i don't feel like it is a subtitle but I'll try 
+  
+
+# This is harder than I thought but I am still going to try using chapter 3 , I want to make the background of the graph grid like and the color grey and grid like.
+
+#STHDA website helped me find a way to fill the background
+
+  theme(panel.background = element_rect(fill = "lightgrey",
+                                colour = "lightgrey",
+                                size = 0.5, linetype = "solid"),
+  panel.grid.major = element_line(size = 0.5, linetype = 'solid',
+                                colour = "lightgrey"), 
+  panel.grid.minor = element_line(size = 0.25, linetype = 'solid',
+                                colour = "white"))
+  Histo_reviews
+  
+# I am getting an error saying that I must have a x or y aesthetic when using the histogram function but I am confused because in chapter 3 I was able to do it , I am just going to use bar for the mean time because in one of chapter 3 examples they used that.
+  
+#Ok it worked , I am going to take a break before doing the next one 
+```
+
+## Verified Users
+
+The dataset contains details of whether the review was based on a verified purchase. From [Amazon Community](https://www.amazon.co.uk/gp/help/customer/display.html?nodeId=G75XTB7MBMBTXP6W):
+
+```{r, echo=FALSE}
+#I have to figure out how to add a side tab for the paragraph underneath this sentence , going to google!
+```
+
+> An "Amazon Verified Purchase" review means that we've verified that the person writing the review purchased the product from Amazon, and didn't recieve the product at a big discount. Reviews that are not marked "Amazon Verified Purchase" are valuable as well, but, either we cannot confirm that the product was purchased from Amazon, or that the customer paid a price that is available to most Amazon shoppers. 
+
+
+Table 1 shows the number of reviews based on verified and unverified purchases. 
+
+```{r, echo=FALSE}
+#Create the table of verified versus unverified purchases with review count 
+
+verified_unverified_reviews<- review_data %>%
+  group_by(verified) %>%
+summarize(counts = n())
+
+#print table using knitr 
+knitr::kable(verified_unverified_reviews)
+
+#The code gave me a table but it doesn't have the lines included in the original table.
+#On the quarto website is recommended that I use #|table cap to add the lines so that is what I'll do , i also want to add a statement at the bottom that describes the table and it says to use #|label for that 
+
+
+# I can't seem to get the lines on the table , I am not sure why , I am going to move on. 
+```
+
+Whilst the number of verified reviews is substantially larger than the number of unverified reviews, the below histogram demonstrates that this has not been a consistent trend and that the large increase in the number of reviews is largely driven by an increase in verified reviews.
+
+```{r, echo=FALSE}
+
+
+# I have to make a stacked histogram , it looks similar to the one included in chapter 3 of the text so I will use that as a guide or my previous code and edit it. 
+verified_by_year_counts <- review_data %>%
+  group_by(year,verified) %>%
+  summarize(counts = n())
+
+# Every time I try to use the histogram function for the graphs, I keep running into error so I am just going to stick to the bar function that I used for the previous graph 
+
+Verified_counts_by_year<- ggplot(data = verified_by_year_counts, mapping = aes(x=year, y=counts, group=verified, fill=verified))+
+geom_bar(stat= "identity")+
+scale_x_continuous(breaks = 1999:2018)+
+  scale_fill_manual(values = c('#3DED97','#d95f02'))
+  theme(axis.text.x = element_text(vjust=0.5,hjust = 1))+
+  xlab("")+
+  ylab("")+
+  ggtitle("Number of reviews per year",
+          subtitle = "By purchase status") +
+  
+  theme(panel.background = element_rect(fill = "lightgrey",
+                                colour = "lightgrey",
+                                size = 0.5, linetype = "solid"),
+  panel.grid.major = element_line(size = 0.5, linetype = 'solid',
+                                colour = "white"), 
+  panel.grid.minor = element_line(size = 0.25, linetype = 'solid',
+                                colour = "lightgrey"))
+  Verified_counts_by_year
+  
+  # I have to make the x axis more separate , let me research how to do that and then edit the code.
+  #Ok I added the vjust and hjust as it mentions on the statistics globe website but the numbers on the x axis are not moving as far apart as I want for the sake of time I will move on. 
+#Before moving on I want to at least try to change the color of the boxes to match the orange and green theme seen in the original graph , ill just look up the color code for both and fill it in manually. 
+  
+  # The closest colors that I could find to the green& orange  is 3ded97 and d95fo2 respectively. 
+
+```
+
+# Review ratings 
+
+## Overall 
+
+Amazon review ratings are provided on a scale 1(worst) to 5(best) stars. The histogram below shows the total number of reviews assigned each rating. 
+
+```{r, echo=FALSE}
+#Let me review the data first to make sure that I am able to make a object for the reviews. 
+# In the data , the rating is labeled as rating normally , so that is what I will have to group by , this should be easy because it is similar to what I did before , so I will copy and paste my previous code and edit it accordingly 
+
+options(scipen = 999)
+
+reviews_rating<-review_data%>%
+  group_by(rating)%>%
+  summarize(counts=n())
+
+
+#Now that I have set my object , it is best that I make my graph now. 
+
+plot_ratings<- ggplot(data = reviews_rating, mapping = aes(x=rating, y=counts))+
+geom_bar(stat= "identity", fill="white",color="black")+
+  xlab("")+
+  ylab("")+
+  ggtitle("Review Ratings",
+          subtitle = "Number of reviews for each rating") +
+  
+  theme(panel.background = element_rect(fill = "lightgrey",
+                                colour = "lightgrey",
+                                size = 0.5, linetype = "solid"),
+  panel.grid.major = element_line(size = 0.5, linetype = 'solid',
+                                colour = "white"), 
+  panel.grid.minor = element_line(size = 0.25, linetype = 'solid',
+                                colour = "lightgrey"))
+ 
+  plot_ratings
+
+
+
+# I have a similar graph to the one in the original report but the only thing is that the y axis contains numbers like like 3e+05 , I have to find a way to make my numbers show in 100,000's as seen in the report. 
+  
+  
+# On Rpubs(coding website) it shows me how to do it manually but I believe it will take too much time , I am just going to compare my code to Professor Crump's to see where I went wrong 
+  
+  #Professor used a code called options and set it to 999 before setting his object , so I'll try to use that and see if it works 
+
+# It worked !, it doesn't have the commas between the digits as I would like but I have to move on 
+
+
+```
+
+# By purchase status 
+
+## However, if you break this data down by verified purchase status you can see that whilst the number of verified and unverifed reviews with 1 to 4 star reviews are similar, there is a very large number of 5 star reviews for verified purchases compared to unverified purchases. 
+
+
+```{r,echo=FALSE}
+#Making these graphs are getting easier because I am pretty much doing the same thing over and over again, setting an object and then making the plot using the object that I created , so lets go ! 
+
+# I am going to use the same code from my previous graphs but edit accordingly 
+
+rating_verified<-review_data%>%
+  group_by(rating,verified)%>%
+summarize(counts= n())
+
+#Now make the plot 
+#The dodge will make the bars side by side instead of one single bar each 
+
+rating_purchase_plot<-ggplot(data = rating_verified,
+                             mapping = aes(x=rating,y=counts,grouping=verified,fill=verified))+
+                     geom_bar(stat="identity",position = "dodge")+
+  scale_fill_manual(values = c('#3DED97','#d95f02'))+
+  xlab("")+
+  ylab("")+
+  ggtitle("Review Ratings",
+          subtitle = "By purchase status")+
+  
+  theme(panel.background = element_rect(fill = "lightgrey",
+                                colour = "lightgrey",
+                                size = 0.5, linetype = "solid"),
+  panel.grid.major = element_line(size = 0.5, linetype = 'solid',
+                                colour = "white"), 
+  panel.grid.minor = element_line(size = 0.25, linetype = 'solid',
+                                colour = "lightgrey"))
+                            
+                             
+                             
+  # Without filling it manually , the boxes are blue and pink, now I have to include the same code as before for the green and orange colors                            
+                             
+                             
+                             
+rating_purchase_plot
+
+
+
+
+
+```
+
+# Average ratings 
+
+## By purchase status 
+
+Average ratings for verified reviews were higher (both mean and median) than for unverified review, likely driven by the number of 5-star reviews for verified views. 
+
+```{r, echo=FALSE}
+
+#Make the object and then make the table 
+# I will use the same code that I used for the previous table but this time we have to include the median and mean 
+
+# I am going to label the objects with mm to represent mean and median 
+verified_mm<- review_data%>%
+group_by(verified)%>%
+
+  #I am not sure how make the mean rating be represented by smaller numbers , I am going to use Professor Crump's example as guidance   
+  
+  summarize('Mean rating'=round(mean(rating), digits=2),
+            'Median rating'=median(rating)) %>%
+  #professor crump used the rename function so that verified is spelled as a capital
+  
+rename(Verified=verified)
+
+knitr::kable(verified_mm) #displaying the table as i did in the previous code 
+
+#Again I am dealing with the same problem as before where I cant see the horizontal and vertical lines of the table
+
+
+
+
+```
+
+
+## By year and Purchase status 
+
+# Average ratings for verified purchases tended to increase over time, while average ratings for unverified purchases tended to decrease over time 
+
+
+```{r}
+# I will make fewer comments this time because I am basically doing the same thing over and over again just in different formats 
+
+# create object 
+
+rating_year_purchase<-review_data%>%
+  group_by(year,verified)%>%
+  summarise(rating_mean=mean(rating))
+
+
+ggplot(data = rating_year_purchase,
+       mapping=aes(x=year,y=rating_mean,group=verified,color=verified))+
+  geom_line()+
+  geom_point()+
+  scale_x_continuous(breaks=1999:2018)+
+  scale_color_manual(values =c('#3DED97','#d95f02'))+
+  xlab("")+
+  ylab("")+
+  ggtitle("Average Ratings",
+          subtitle = "By year and purchase status")+
+  
+  #Copy the code from before 
+  
+  
+ theme(panel.background = element_rect(fill = "lightgrey",
+                                colour = "lightgrey",
+                                size = 0.5, linetype = "solid"),
+  panel.grid.major = element_line(size = 0.5, linetype = 'solid',
+                                colour = "white"), 
+  panel.grid.minor = element_line(size = 0.25, linetype = 'solid',
+                                colour = "lightgrey"))
+  
+#I am done!
+
+```
+
+
+
+
+
+
