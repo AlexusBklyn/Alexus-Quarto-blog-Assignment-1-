@@ -269,7 +269,7 @@ knitr::kable(verified_mm) #displaying the table as i did in the previous code
 # Average ratings for verified purchases tended to increase over time, while average ratings for unverified purchases tended to decrease over time 
 
 
-```{r}
+```{r,echo=FALSE}
 # I will make fewer comments this time because I am basically doing the same thing over and over again just in different formats 
 
 # create object 
